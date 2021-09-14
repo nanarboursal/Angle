@@ -22,9 +22,10 @@ const NavBar = props => {
 
   return (
     <div className="user-nav">
-      <Navbar light expand="md">
+      <Navbar light expand="sm">
         <NavbarBrand href="/">
-          <img className="navbar-brand" src={logo} alt="logo-img"></img>
+          angle
+          {/* <img className="navbar-brand" src={logo} alt="logo-img"></img> */}
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -36,7 +37,7 @@ const NavBar = props => {
               <DropdownToggle nav caret>
                 Profile
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu>
                 <DropdownItem href="/profile">View Profile</DropdownItem>
                 <DropdownItem href="/ratings">Log Out</DropdownItem>
               </DropdownMenu>
@@ -46,8 +47,8 @@ const NavBar = props => {
                 Sign In
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem href="/profile">Sign Up</DropdownItem>
-                <DropdownItem href="/ratings">Log In</DropdownItem>
+                <DropdownItem href="/signup">Sign Up</DropdownItem>
+                <DropdownItem href="/login">Log In</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
