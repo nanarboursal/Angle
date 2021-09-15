@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./signup.css";
 import {
   Container,
@@ -8,11 +8,16 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
-  FormText
+  Input
 } from "reactstrap";
 
 export default function SignUp() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [bookGenres, setBookGenres] = useState([]);
+  const [movieGenres, setMovieGenres] = useState([]);
+
   return (
     <div className="signup-page">
       <Container>
@@ -99,7 +104,8 @@ export default function SignUp() {
               </FormGroup>
               <FormGroup check className="signup-group">
                 <Label check>
-                  <Input type="checkbox" /> I agree to Angle's Terms and Conditions.
+                  <Input type="checkbox" /> I agree to Angle's Terms and
+                  Conditions.
                 </Label>
               </FormGroup>
               <Button className="signup-group">Submit</Button>
