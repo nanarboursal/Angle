@@ -5,6 +5,8 @@ import Profile from "./Pages/Profile/Profile";
 import Library from "./Pages/Library/Library";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
+import AddBook from "./Pages/AddBook/AddBook";
+import AddMovie from "./Pages/AddMovie/AddMovie";
 
 export default function Routes(props) {
   //Add new routes in this array
@@ -28,6 +30,14 @@ export default function Routes(props) {
     {
       path: "/signup",
       component: SignUp
+    },
+    {
+      path: "/addbook",
+      component: AddBook
+    },
+    {
+      path: "/addmovie",
+      component: AddMovie
     }
   ];
   return (
