@@ -3,7 +3,7 @@ import React from "react";
 const BookList = ({ bookList = [] }) => {
   return (
     <>
-      {bookList.map((data, index) => {
+      {bookList.map((data) => {
         if (data) {
           return (
             <div key={data.title}>
