@@ -61,11 +61,7 @@ input:focus {
   margin-left: 10px;
   font-style: italic;
 }
-a {
-  text-decoration: none;
-}
-
-a:hover {
+.data-item:hover {
   background-color: lightgrey;
 }
 
