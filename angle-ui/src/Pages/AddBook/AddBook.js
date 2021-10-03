@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Button, Container, Row, Col } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import { data } from "./books.json";
 import BookList from "./BookList";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import "./add-book.css";
 
 export default function AddBook() {
-  const [input, setInput] = useState("");
-
-  const editSearchTerm = e => {
-    setInput(e.target.value);
-  };
-
-  const dynamicSearch = () => {
-    return data.filter(book =>
-      book.title.toLowerCase().includes(input.toLowerCase())
-    );
-  };
-
+  
   return (
     <div>
       <Container>
@@ -27,17 +17,7 @@ export default function AddBook() {
         </Row>
         <Row>
           <Col>
-            <input
-              type="text"
-              value={input}
-              onChange={editSearchTerm}
-              placeholder="Search for a title!"
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <BookList bookList={dynamicSearch()} />
+            <SearchBar placeholder="Enter a book title!" data={data}/>
           </Col>
         </Row>
       </Container>
