@@ -1,0 +1,13 @@
+.login-page {
+    background-color: #ffffff; /*Change later*/
+    width: 100%;
+    height: 92vh;
+}
+
+.page-title {
+    text-align: center;
+}
+
+.login-group {
+    margin: 2%;
+}
