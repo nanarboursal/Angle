@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { PrivateRoute } from "./Components/PrivateRoute";
+import { isLoggedIn } from "./Functions/Authentication";
+
 import Ratings from "./Pages/Ratings/Ratings";
 import Playlists from "./Pages/Playlists/Playlists";
 import Library from "./Pages/Library/Library";
@@ -10,11 +13,7 @@ import AddMovie from "./Pages/AddMovie/AddMovie";
 
 export default function Routes(props) {
   //Add new routes in this array
-  const routes = [
-    {
-      path: "/",
-      component: Library
-    },
+  const privateRoutes = [
     {
       path: "/playlists",
       component: Playlists
@@ -22,14 +21,6 @@ export default function Routes(props) {
     {
       path: "/ratings",
       component: Ratings
-    },
-    {
-      path: "/login",
-      component: Login
-    },
-    {
-      path: "/signup",
-      component: SignUp
     },
     {
       path: "/addbook",
@@ -40,16 +31,42 @@ export default function Routes(props) {
       component: AddMovie
     }
   ];
+
+  const publicRoutes = [
+    {
+      path: "/",
+      component: Library
+    },
+    {
+      path: "/login",
+      component: Login
+    },
+    {
+      path: "/signup",
+      component: SignUp
+    }
+  ];
+
   return (
     <Router>
       <Switch>
-        {routes.map((route, index) => {
+        {publicRoutes.map((route, index) => {
           return (
             <Route
               exact
               key={index}
-              path={route.path}
-              component={route.component}
+              path={publicRoutes.path}
+              component={publicRoutes.component}
+            />
+          );
+        })}
+        {privateRoutes.map((route, index) => {
+          return (
+            <PrivateRoute
+              exact
+              isloggedin={isLoggedIn()}
+              path={privateRoutes.path}
+              component={privateRoutes.component}
             />
           );
         })}
