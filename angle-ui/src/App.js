@@ -4,10 +4,10 @@ import NavBar from './Components/Navbar/NavBar';
 
 function App() {
   return (
-    <div>
+    <dix>
       <NavBar/>
       <Routes/>
-    </div>
+    </dix>
   );
 }
 
