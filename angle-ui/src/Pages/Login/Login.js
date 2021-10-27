@@ -1,11 +1,12 @@
 import React from "react";
 import { login } from "../../Functions/UserFunctions";
+import logo from "../../Images/angle-transparent.png";
 import "./login.css";
+import { AuthButton, Center, Logo } from "./Login.styles";
 import {
   Container,
   Row,
   Col,
-  Button,
   Form,
   FormGroup,
   Label,
@@ -52,6 +53,9 @@ class Login extends React.Component {
     return (
       <div className="login-page">
         <Container>
+          <Center>
+            <Logo src={logo} />
+          </Center>
           <Row className="page-title">
             <Col>
               <h1>Log In</h1>
@@ -82,7 +86,7 @@ class Login extends React.Component {
                     onChange={this.onChange}
                   />
                 </FormGroup>
-                <Button className="signup-group" disabled={!this.validateForm()} onClick={this.onSubmit}>Submit</Button>
+                <AuthButton disabled={!this.validateForm()} onClick={this.onSubmit}>Submit</AuthButton>
               </Form>
             </Col>
           </Row>
