@@ -15,11 +15,8 @@ export default function Library() {
           </Row>
           <Row>
             <Col>
-              <Button className="add-buttons" href="/addbook">
-                Add Book
-              </Button>
-              <Button className="add-buttons" href="/addmovie">
-                Add Movie
+              <Button className="add-buttons" href="/addmedia">
+                Add Media
               </Button>
             </Col>
           </Row>

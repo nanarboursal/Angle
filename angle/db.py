@@ -6,7 +6,7 @@ import pymongo
 
 # client = pymongo.MongoClient(CONNECTION_STRING, ssl_cert_reqs=ssl.CERT_NONE)
 
-CONNECTION_STRING = ""
+CONNECTION_STRING = "mongodb+srv://nanar:whatsyourangle@cluster0.rnojj.mongodb.net/Angle?retryWrites=true&w=majority" # get rid of this before pushing
 client = pymongo.MongoClient(CONNECTION_STRING, ssl_cert_reqs=ssl.CERT_NONE)
 db = client["Angle"]
 angleUsers = db["User"]
