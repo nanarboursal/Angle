@@ -10,5 +10,7 @@ CONNECTION_STRING = "mongodb+srv://nanar:whatsyourangle@cluster0.rnojj.mongodb.n
 client = pymongo.MongoClient(CONNECTION_STRING, ssl_cert_reqs=ssl.CERT_NONE)
 db = client["Angle"]
 angleUsers = db["User"]
+libraries = db["Library"]
+playlists = db["Playlist"]
 
 # coll.insert_one({"life": "cool"})

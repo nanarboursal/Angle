@@ -14,29 +14,35 @@ export default function AddMedia() {
             <h1>Add Your Media!</h1>
           </Col>
         </Row>
-        {/* <Row className="add-title">
+        <Row className="media-type">
           <Col>
             <ButtonGroup>
-              <Button onClick={setMediaType("book")}>
-                Book
-              </Button>
-              <Button onClick={setMediaType("movie")}>
-                Movie
-              </Button>
+              <Button onClick={() => setMediaType("Book")}>Book</Button>
+              <Button onClick={() => setMediaType("Movie")}>Movie</Button>
             </ButtonGroup>
           </Col>
-        </Row> */}
-        <Row>
           <Col>
-            <SearchBar placeholder="Enter a book title!" data={data} />
+            <p>Media Type: {mediaType}</p>
           </Col>
         </Row>
-        <Row className="manual-add">
-          <Col>
-            <input placeholder="Enter title manually."></input>
+        <Row>
+          <Col></Col>
+          <Col className="manual-add">
+            <input placeholder="Enter title."></input>
           </Col>
+        </Row>
+        <Row>
           <Col>
-            <input placeholder="Enter author manually."></input>
+            <SearchBar placeholder="Enter a media title!" data={data} />
+          </Col>
+          <Col className="manual-add">
+            <input placeholder="Enter author or director."></input>
+          </Col>
+        </Row>
+        <Row>
+          <Col> </Col>
+          <Col className="notes">
+            <textarea placeholder="Enter notes here."></textarea>
           </Col>
         </Row>
         <Row className="submit-btn">
