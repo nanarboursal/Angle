@@ -107,5 +107,20 @@ def add_media():
 
     return jsonify({'result': result})
 
+@app.route('/libraries/getlibrary', methods=["GET"])
+def get_library():
+    print("ended up in app")
+    libraries = db.libraries
+    # email = request.get_json()['email']
+
+    email = "nanarb@gmail.com"
+    response = libraries.find_one({'email': email})
+    if response:
+        result = response['books']
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))

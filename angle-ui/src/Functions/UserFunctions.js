@@ -25,6 +25,7 @@ export const login = user => {
     })
     .then(response => {
       localStorage.setItem("usertoken", response.data.token);
+      console.log("data: ", response.data);
       return response.data;
     })
     .catch(err => {
@@ -42,12 +43,12 @@ export const addMedia = media => {
 
   return axios
     .post("http://10.0.0.179:80/libraries/addmedia", {
-      email: "nanarb@gmail.com",
+      email: "nanarb@gmail.com", // have to fix later
       mediaType: media.mediaType,
       title: media.title,
       author: media.author,
       notes: media.notes,
-      rating: "1"
+      rating: "1" // have to change later
     })
     .then(response => {
       console.log("user functions response", response);
@@ -56,4 +57,17 @@ export const addMedia = media => {
     .catch(err => {
       console.log(err);
     });
+};
+
+export const getlibrary = () => {
+  // return axios.get("http://10.0.0.179:80/libraries/getlibrary", {
+  //   email: "nanarb@gmail.com"
+  // })
+  return axios.get("http://10.0.0.179:80/libraries/getlibrary")
+  .then(response => {
+    return response.data.result;
+  })
+  .catch(err => {
+    console.log(err);
+  });
 };

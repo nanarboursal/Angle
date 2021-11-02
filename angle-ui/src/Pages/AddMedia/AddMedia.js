@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Row, Col, ButtonGroup } from "reactstrap";
-import { data } from "../../Data/Books/books.json";
+// import { data } from "../../Data/Books/books.json";
+import { data } from "./books.json";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import { addMedia } from "../../Functions/UserFunctions";
 import jwt_decode from "jwt-decode";
