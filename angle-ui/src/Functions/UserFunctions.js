@@ -34,22 +34,23 @@ export const login = user => {
 
 export const addMedia = media => {
   // used to determine email
-  const theToken = localStorage.getItem("usertoken");
-  const decodedToken = jwt_decode(theToken);
-  console.log(decodedToken);
-  const email = decodedToken.sub.email;
-  console.log("this is the email after adding media", email);
+  // const theToken = localStorage.getItem("usertoken");
+  // const decodedToken = jwt_decode(theToken);
+  // console.log(decodedToken);
+  // const email = decodedToken.sub.email;
+  // console.log("this is the email after adding media", email);
 
   return axios
     .post("http://10.0.0.179:80/libraries/addmedia", {
-      email: email,
-      mediaType: media.type,
+      email: "nanarb@gmail.com",
+      mediaType: media.mediaType,
       title: media.title,
       author: media.author,
       notes: media.notes,
-      rating: media.rating
+      rating: "1"
     })
     .then(response => {
+      console.log("user functions response", response);
       return response;
     })
     .catch(err => {

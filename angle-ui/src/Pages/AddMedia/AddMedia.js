@@ -36,8 +36,10 @@ class AddMedia extends React.Component {
     };
 
     addMedia(media).then(res => {
+      console.log(media);
       if (!res.error && !res.result) {
-        alert("Media added!");
+        alert(this.state.title + " was added to your library!");
+        this.props.history.push("/");
       } else {
         alert("User not found!");
       }
@@ -52,7 +54,7 @@ class AddMedia extends React.Component {
     return (
       <div>
         <Container>
-          {console.log("this is the user token after logging in", localStorage.getItem("usertoken"))}
+          {console.log("this is the user type", this.state.mediaType)}
           <Row className="add-title">
             <Col>
               <h1>Add Your Media!</h1>
@@ -73,8 +75,12 @@ class AddMedia extends React.Component {
             <Col></Col>
             <Col className="manual-add">
               <input
-                onChange={this.onChange}
+                type="text"
+                name="title"
+                id="title"
                 placeholder="Enter title."
+                value={this.state.title}
+                onChange={this.onChange}
               ></input>
             </Col>
           </Row>
@@ -83,13 +89,27 @@ class AddMedia extends React.Component {
               <SearchBar placeholder="Enter a media title!" data={data} />
             </Col>
             <Col className="manual-add">
-              <input onChange={this.onChange} placeholder="Enter author or director."></input>
+              <input
+                type="text"
+                name="author"
+                id="author"
+                onChange={this.onChange}
+                value={this.state.author}
+                placeholder="Enter author or director."
+              ></input>
             </Col>
           </Row>
           <Row>
             <Col> </Col>
             <Col className="notes">
-              <textarea onChange={this.onChange} placeholder="Enter notes here."></textarea>
+              <textarea
+                type="text"
+                name="notes"
+                id="notes"
+                onChange={this.onChange}
+                value={this.state.notes}
+                placeholder="Enter notes here."
+              ></textarea>
             </Col>
           </Row>
           <Row className="submit-btn">
