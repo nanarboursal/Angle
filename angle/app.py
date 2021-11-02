@@ -30,9 +30,12 @@ def index():
 @app.route('/users/register', methods=["POST"])
 def register():
     users = db.angleUsers
+    # libraries = db.libraries
     first_name = request.get_json()['first_name']
     last_name = request.get_json()['last_name']
     email = request.get_json()['email']
+    # books = {}
+    # movies = {}
     password = bcrypt.generate_password_hash(
         request.get_json()['password']).decode('utf-8')
 
@@ -42,6 +45,7 @@ def register():
     else:
         user_id = users.insert(
             {'first_name': first_name, 'last_name': last_name, 'email': email, 'password': password})
+        # libraries.insert({'email': email, 'books': books, 'movies': movies})
         new_user = users.find_one({'_id': user_id})
         result = {'email': new_user['email'] + ' registered'}
 
@@ -72,6 +76,32 @@ def login():
         result = jsonify({"result": "No results found"})
 
     return result
+
+# @app.route('/libraries/addmedia', methods=["POST"])
+# def add_media():
+#     libraries = db.libraries
+#     email = request.get_json()['email']
+#     mediaType = request.get_json()['media_type']
+#     title = request.get_json()['title']
+#     author = request.get_json()['author']
+#     notes = request.get_json()['notes']
+#     rating = request.get_son()['rating']
+
+#     response = libraries.find_one({'email': email})
+#     if response:
+#         if mediaType == "Book":
+#             books = response["books"]
+#             books.insert(
+#             {'mediaID': title+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating})
+#         elif mediaType == "Movie":
+#             movies = response["movies"]
+#             movies.insert(
+#             {'mediaID': title+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating})
+#         result = {"success": "new media added"}
+#     else:
+#         result = {"error": "an error was encountered"}
+
+#     return jsonify({'result': result})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
