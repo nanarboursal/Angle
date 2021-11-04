@@ -3,17 +3,16 @@ import { Button, Container, Row, Col } from "reactstrap";
 import "./library.css";
 import { isLoggedIn } from "../../Functions/Authentication";
 import MediaCard from "./MediaCard";
-import { getlibrary } from "../../Functions/UserFunctions";
+import { getLibrary } from "../../Functions/UserFunctions";
 
 export default function Library() {
   const [books, setBooks] = useState([]);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    getlibrary().then(res => {
+    getLibrary().then(res => {
       if (!res.error && !res.result) {
         setBooks(res);
-        alert("library retrieved!");
       } else {
         alert("error");
       }
@@ -21,10 +20,10 @@ export default function Library() {
   }, []);
   console.log("here are the books", books);
 
-  let mediaCards = books.map(book => {
+  let bookCards = books.map(book => {
     return (
       <li className="flex-item">
-        <MediaCard book={book} />
+        <MediaCard media={book} />
       </li>
     );
   });
@@ -45,7 +44,7 @@ export default function Library() {
           </Col>
         </Row>
         <Row>
-          <ul className="flex-container wrap-reversez">{mediaCards}</ul>
+          <ul className="flex-container wrap-reversez">{bookCards}</ul>
         </Row>
       </Container>
       {/* {isLoggedIn() ? (

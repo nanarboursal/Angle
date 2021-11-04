@@ -90,16 +90,16 @@ def add_media():
     response = libraries.find_one({'email': email})
     if response:
         if mediaType == "Book":
-            media = {'mediaID': title+"////"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
+            media = {'mediaType': "book", 'mediaID': title+"////"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
             libraries.update(
                 {'email': email},
                 {'$push': {'books': media}}
             )
         elif mediaType == "Movie":
-            media = {'mediaID': title+"////"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
+            media = {'mediaType': "movie", 'mediaID': title+"////"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
             libraries.update(
                 {'email': email},
-                {'$push': {'books': media}}
+                {'$push': {'movies': media}}
             )
         result = {"success": "new media added"}
     else:
@@ -109,7 +109,6 @@ def add_media():
 
 @app.route('/libraries/getlibrary', methods=["GET"])
 def get_library():
-    print("ended up in app")
     libraries = db.libraries
     # email = request.get_json()['email']
 
@@ -117,6 +116,31 @@ def get_library():
     response = libraries.find_one({'email': email})
     if response:
         result = response['books']
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
+@app.route('/libraries/deletemedia', methods=["POST"])
+def delete_media():
+    libraries = db.libraries
+    email = request.get_json()['email']
+    mediaType = request.get_json()['mediaType']
+    mediaID = request.get_json()['title'] + "////" + request.get_json()['author']
+
+    response = libraries.find_one({'email': email})
+    if response:
+        if mediaType == "book":
+            libraries.update(
+                {'email': email},
+                {'$pull': {'books': {'mediaID': mediaID}}}
+            )
+        elif mediaType == "movie":
+            libraries.update(
+                {'email': email},
+                {'$pull': {'movies': {'mediaID': mediaID}}}
+            )
+        result = {"success": "media removed"}
     else:
         result = {"error": "an error was encountered"}
 

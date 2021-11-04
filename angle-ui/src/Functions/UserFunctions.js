@@ -59,7 +59,7 @@ export const addMedia = media => {
     });
 };
 
-export const getlibrary = () => {
+export const getLibrary = () => {
   // return axios.get("http://10.0.0.179:80/libraries/getlibrary", {
   //   email: "nanarb@gmail.com"
   // })
@@ -70,4 +70,27 @@ export const getlibrary = () => {
   .catch(err => {
     console.log(err);
   });
+};
+
+export const deleteMedia = media => {
+  // used to determine email
+  // const theToken = localStorage.getItem("usertoken");
+  // const decodedToken = jwt_decode(theToken);
+  // console.log(decodedToken);
+  // const email = decodedToken.sub.email;
+  // console.log("this is the email after adding media", email);
+
+  return axios
+    .post("http://10.0.0.179:80/libraries/deletemedia", {
+      email: "nanarb@gmail.com", // have to fix later
+      mediaType: media.mediaType,
+      title: media.title,
+      author: media.author
+    })
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
