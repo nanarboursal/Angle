@@ -59,11 +59,24 @@ export const addMedia = media => {
     });
 };
 
-export const getLibrary = () => {
+export const getBooks = () => {
   // return axios.get("http://10.0.0.179:80/libraries/getlibrary", {
   //   email: "nanarb@gmail.com"
   // })
-  return axios.get("http://10.0.0.179:80/libraries/getlibrary")
+  return axios.get("http://10.0.0.179:80/libraries/getbooks")
+  .then(response => {
+    return response.data.result;
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
+export const getMovies = () => {
+  // return axios.get("http://10.0.0.179:80/libraries/getlibrary", {
+  //   email: "nanarb@gmail.com"
+  // })
+  return axios.get("http://10.0.0.179:80/libraries/getmovies")
   .then(response => {
     return response.data.result;
   })

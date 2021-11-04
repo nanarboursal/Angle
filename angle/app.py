@@ -107,8 +107,8 @@ def add_media():
 
     return jsonify({'result': result})
 
-@app.route('/libraries/getlibrary', methods=["GET"])
-def get_library():
+@app.route('/libraries/getbooks', methods=["GET"])
+def get_books():
     libraries = db.libraries
     # email = request.get_json()['email']
 
@@ -116,6 +116,20 @@ def get_library():
     response = libraries.find_one({'email': email})
     if response:
         result = response['books']
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
+@app.route('/libraries/getmovies', methods=["GET"])
+def get_movies():
+    libraries = db.libraries
+    # email = request.get_json()['email']
+
+    email = "nanarb@gmail.com"
+    response = libraries.find_one({'email': email})
+    if response:
+        result = response['movies']
     else:
         result = {"error": "an error was encountered"}
 
