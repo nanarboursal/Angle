@@ -79,7 +79,7 @@ class SignUp extends React.Component {
     return (
       <div className="signup-page">
         <Container>
-          <Row className="page-title">
+         <Row className="page-title">
             <Col>
               <h1>Sign Up</h1>
             </Col>

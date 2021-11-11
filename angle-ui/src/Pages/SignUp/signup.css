@@ -1,13 +1,32 @@
-.login-page {
-    background-color: #ffffff; /*Change later*/
-    width: 100%;
-    height: 92vh;
+
+.signup-page {
+    /*background-image: url("C:\Users\jgaeu\Angle\angle-ui\src\Images\background.png");
+    */
+    background-image: url("../../Images/bg2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 50% 100%;
+    background-position: right; 
 }
 
 .page-title {
-    text-align: center;
+    padding-top: 2em;
+    padding-left: 6em;
+    background-image:url("../../Images/lg2.png");
+    background-repeat: no-repeat;
+    background-size: 6.1em;
+    font-style:  oblique;
+    text-align: left;
 }
 
-.login-group {
+.signup-group {
+    font-style:  oblique;
+    font-weight: bold;
     margin: 2%;
+    width: 40%;
+    border:20px;
+   /*
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    */
 }
