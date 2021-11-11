@@ -1,0 +1,21 @@
+.add-playlist-title {
+    text-align: center;
+}
+
+.playlist-name {
+    margin-top: 1.5% !important;
+    margin-bottom: 1.5%;
+}
+
+.playlist-name input {
+    width: 70%;
+    height: 50px;
+    font-size: large;
+    padding: 1%
+}
+
+.submit-btn {
+    text-align: center;
+    margin-top: 5% !important;
+    margin-bottom: 5%;
+}

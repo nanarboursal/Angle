@@ -163,5 +163,26 @@ def delete_media():
 
     return jsonify({'result': result})
 
+@app.route('/playlists/addplaylist', methods=["POST"])
+def add_playlist():
+    playlists = db.playlists
+    email = request.get_json()['email']
+    playlistName = request.get_json()['playlistName']
+    books = request.get_json()['books']
+    movies = request.get_json()['movies']
+
+    response = playlists.find_one({'email': email})
+    if response:
+        playlist = {'playlistName': playlistName, 'books': books, 'movies': movies}
+        playlists.update(
+            {'email': email},
+            {'$push': {'playlists': playlist}}
+        )
+        result = {"success": "new media added"}
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))

@@ -107,3 +107,27 @@ export const deleteMedia = media => {
       console.log(err);
     });
 };
+
+export const addPlaylist = playlist => {
+  // used to determine email
+  // const theToken = localStorage.getItem("usertoken");
+  // const decodedToken = jwt_decode(theToken);
+  // console.log(decodedToken);
+  // const email = decodedToken.sub.email;
+  // console.log("this is the email after adding media", email);
+
+  return axios
+    .post("http://10.0.0.179:80/playlists/addplaylist", {
+      email: "nanarb@gmail.com", // have to fix later
+      playlistName: playlist.playlistName,
+      books: playlist.books,
+      movies: playlist.movies
+    })
+    .then(response => {
+      console.log("user functions response", response);
+      return response;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
