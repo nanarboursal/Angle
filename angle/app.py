@@ -31,11 +31,13 @@ def index():
 def register():
     users = db.angleUsers
     libraries = db.libraries
+    playlists = db.playlists
     first_name = request.get_json()['first_name']
     last_name = request.get_json()['last_name']
     email = request.get_json()['email']
-    books = []
-    movies = []
+    books = [] # for adding to libraries
+    movies = [] # for adding to libraries
+    userPlaylists = [] # for adding to playlists
     password = bcrypt.generate_password_hash(
         request.get_json()['password']).decode('utf-8')
 
@@ -46,6 +48,7 @@ def register():
         user_id = users.insert(
             {'first_name': first_name, 'last_name': last_name, 'email': email, 'password': password})
         libraries.insert({'email': email, 'books': books, 'movies': movies})
+        playlists.insert({'email': email, 'playlists': userPlaylists})
         new_user = users.find_one({'_id': user_id})
         result = {'email': new_user['email'] + ' registered'}
 

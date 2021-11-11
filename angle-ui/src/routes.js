@@ -6,6 +6,7 @@ import Library from "./Pages/Library/Library";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import AddMedia from "./Pages/AddMedia/AddMedia";
+import AddPlaylist from "./Pages/AddPlaylist/AddPlaylist";
 
 export default function Routes(props) {
   //Add new routes in this array
@@ -34,6 +35,10 @@ export default function Routes(props) {
       path: "/addmedia",
       component: AddMedia
     },
+    {
+      path: "/addplaylist",
+      component: AddPlaylist
+    }
   ];
   return (
     <Router>
