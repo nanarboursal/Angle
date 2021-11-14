@@ -131,3 +131,37 @@ export const addPlaylist = playlist => {
       console.log(err);
     });
 };
+
+export const getPlaylists = () => {
+  // return axios.get("http://10.0.0.179:80/libraries/getlibrary", {
+  //   email: "nanarb@gmail.com"
+  // })
+  return axios.get("http://10.0.0.179:80/playlists/getplaylists")
+  .then(response => {
+    return response.data.result;
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
+export const deletePlaylist = playlist => {
+  // used to determine email
+  // const theToken = localStorage.getItem("usertoken");
+  // const decodedToken = jwt_decode(theToken);
+  // console.log(decodedToken);
+  // const email = decodedToken.sub.email;
+  // console.log("this is the email after adding media", email);
+
+  return axios
+    .post("http://10.0.0.179:80/playlists/deleteplaylist", {
+      email: "nanarb@gmail.com", // have to fix later
+      playlistName: playlist.playlistName
+    })
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};

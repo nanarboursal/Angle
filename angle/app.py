@@ -184,5 +184,39 @@ def add_playlist():
 
     return jsonify({'result': result})
 
+@app.route('/playlists/getplaylists', methods=["GET"])
+def get_playlists():
+    playlists = db.playlists
+    # email = request.get_json()['email']
+
+    email = "nanarb@gmail.com"
+    response = playlists.find_one({'email': email})
+    if response:
+        result = response['playlists']
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
+@app.route('/playlists/deleteplaylist', methods=["POST"])
+def delete_playlist():
+    playlists = db.playlists
+    email = request.get_json()['email']
+    playlistName = request.get_json()['playlistName']
+    print("HERE IS THE PLAYLIST NAME")
+    print(playlistName)
+
+    response = playlists.find_one({'email': email})
+    if response:
+        playlists.update(
+            {'email': email},
+            {'$pull': {'playlists': {'playlistName': playlistName}}}
+        )
+        result = {"success": "playlist removed"}
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))

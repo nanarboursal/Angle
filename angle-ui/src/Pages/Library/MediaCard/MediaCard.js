@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
-import { deleteMedia } from "../../Functions/UserFunctions";
+import { deleteMedia } from "../../../Functions/UserFunctions";
 import "./media-card.css";
 
 export const MediaCard = props => {

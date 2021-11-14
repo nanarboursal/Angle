@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Row, Col } from "reactstrap";
 import "./library.css";
 import { isLoggedIn } from "../../Functions/Authentication";
-import MediaCard from "./MediaCard";
+import MediaCard from "./MediaCard/MediaCard";
 import { getBooks, getMovies } from "../../Functions/UserFunctions";
 
 export default function Library() {
