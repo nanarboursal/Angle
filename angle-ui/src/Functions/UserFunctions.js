@@ -48,7 +48,7 @@ export const addMedia = media => {
       title: media.title,
       author: media.author,
       notes: media.notes,
-      rating: "1" // have to change later
+      rating: media.rating
     })
     .then(response => {
       console.log("user functions response", response);

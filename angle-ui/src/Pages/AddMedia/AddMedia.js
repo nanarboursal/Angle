@@ -4,6 +4,7 @@ import { Button, Container, Row, Col, ButtonGroup } from "reactstrap";
 import { data } from "./books.json";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import { addMedia } from "../../Functions/UserFunctions";
+import { Rating, RatingView } from "react-simple-star-rating";
 import jwt_decode from "jwt-decode";
 import "./add-media.css";
 
@@ -15,7 +16,7 @@ class AddMedia extends React.Component {
       title: "",
       author: "",
       notes: "",
-      rating: ""
+      rating: 0
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -49,6 +50,11 @@ class AddMedia extends React.Component {
 
   changeType(theType) {
     this.setState({ mediaType: theType });
+  }
+
+  handleRating = (rate) => {
+    this.setState({rating: rate});
+    console.log("the rating is now", this.state.rating);
   }
 
   render() {
@@ -98,6 +104,13 @@ class AddMedia extends React.Component {
                 value={this.state.author}
                 placeholder="Enter author or director."
               ></input>
+            </Col>
+          </Row>
+          <Row>
+            <Col> </Col>
+            <Col>
+              <p>Choose a rating.</p>
+              <Rating ratingValue={this.state.rating} onClick={(theRating) => this.handleRating(theRating)} />
             </Col>
           </Row>
           <Row>
