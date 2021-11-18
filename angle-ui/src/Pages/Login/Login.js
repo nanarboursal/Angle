@@ -53,7 +53,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <Container className="login-page">
+      <div className="login-page">
         <Row>
           <Col>
             <div class="form-container sign-in-container">
@@ -95,13 +95,13 @@ class Login extends React.Component {
           <Col>
               <div class="overlay">
                 <div class="overlay-panel overlay-right">
-                  <Logo src={movie} />
-                  <Logo src={book} />
+                  {/* <Logo src={movie} />
+                  <Logo src={book} /> */}
                 </div>
               </div>
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }

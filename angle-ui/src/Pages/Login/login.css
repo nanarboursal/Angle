@@ -1,95 +1,98 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 .signup-page {
-    background-color: #ffffff; /*Change later*/
-    width: 100%;
-    height: 92vh;
+  background-color: #ffffff; /*Change later*/
+  width: 100%;
+  height: 92vh;
 }
 
 .page-title {
-    text-align: center;
+  text-align: center;
 }
 
 .signup-group {
-    margin: 2%;
-    
+  margin: 2%;
 }
 
 h1 {
-    font-weight: bold;
-    font-size: 30px;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .form-container {
-	/* position: absolute; */
-	/* top: 0; */
-	height: 100%;
+  /* position: absolute; */
+  /* top: 0; */
+  height: 100%;
 }
 
 .sign-in-container {
-	left: 0;
-	width: 50%;
-	z-index: 2;
+  left: 0;
+  width: 100%;
+  z-index: 2;
 }
 
-.login-page{
-	align-items: center;
+.login-page {
+  align-items: center;
 }
 
+input {
+  width: 125% !important;
+}
 
 form {
-	/* background-color: #FFFFFF; */
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	padding: 50px 50px;
-	height: 50%;
-	text-align: center;
-    font-family: 'Montserrat', sans-serif;
+  /* background-color: #FFFFFF; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px 50px;
+  height: 50%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
 }
 
 .overlay-container {
-	/* position: absolute; */
-	/* top: 0; */
-	/* left: 50%; */
-	/* width: 100%; */
-	height: 95vh;
-	/* overflow: hidden; */
-	z-index: 100;
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 50%; */
+  /* width: 100%; */
+  height: 95vh;
+  /* overflow: hidden; */
+  z-index: 100;
 }
 
 .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-	background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-	background-repeat: no-repeat;
-	background-size: cover;
-	/* background-position: 0 0; */
-	/* color: #FFFFFF; */
-	position: relative;
-	/* left: -100%; */
-	height: 95vh;
-	width: 100%;
-  	transform: translateX(0);
+  background: #ff416c;
+  background: -webkit-linear-gradient(
+    to right,
+    #ee7724,
+    #d8363a,
+    #dd3675,
+    #b44593
+  );
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 95vh;
+  background-position: right;
 }
 
 .overlay-panel {
-	/* position: absolute; */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 40px;
-	text-align: center;
-	top: 0;
-	height: 100%;
-	width: 50%;
-	/* transform: translateX(0); */
+  /* position: absolute; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  /* transform: translateX(0); */
 }
 
 .overlay-right {
-	right: 0 !important;
-	transform: translateX(0);
+  right: 0 !important;
+  transform: translateX(0);
 }
 
 /* .container {
