@@ -146,7 +146,7 @@ class SignUp extends React.Component {
               </Form>
             </Col>
           </Row>
-        </Container>
+          </Container>
       </div>
     );
   }
