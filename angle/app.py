@@ -14,7 +14,7 @@ app = Flask(__name__, static_folder='../angle-ui/build', static_url_path='/')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['MONGO_DBNAME'] = 'Angle'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/Angle' # get rid of this before pushing
+# URI goes here
 app.config['JWT_SECRET_KEY'] = 'secret'
 
 mongo = PyMongo(app)
