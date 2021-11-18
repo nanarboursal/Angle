@@ -5,8 +5,8 @@ import Playlists from "./Pages/Playlists/Playlists";
 import Library from "./Pages/Library/Library";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
-import AddBook from "./Pages/AddBook/AddBook";
-import AddMovie from "./Pages/AddMovie/AddMovie";
+import AddMedia from "./Pages/AddMedia/AddMedia";
+import AddPlaylist from "./Pages/AddPlaylist/AddPlaylist";
 
 export default function Routes(props) {
   //Add new routes in this array
@@ -32,12 +32,12 @@ export default function Routes(props) {
       component: SignUp
     },
     {
-      path: "/addbook",
-      component: AddBook
+      path: "/addmedia",
+      component: AddMedia
     },
     {
-      path: "/addmovie",
-      component: AddMovie
+      path: "/addplaylist",
+      component: AddPlaylist
     }
   ];
   return (

@@ -35,7 +35,7 @@ h1 {
   align-items: center;
 }
 
-input {
+.login-input {
   width: 125% !important;
 }
 
