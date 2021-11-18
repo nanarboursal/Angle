@@ -53,60 +53,55 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="login-page">
-        <div class="container" id="container">
-          <Container>
-            <Row>
-              <Col>
-                <div class="form-container sign-in-container">
-                  <Row className="page-title">
-                    <Center>
-                      <Logo src={logo} />
-                    </Center>
-                   
-                  </Row>
-                  <Form>
-                    <FormGroup className="login-group">
-                    <Col>
-                      <h1>Sign In</h1>
-                    </Col>
-                      <Label for="userEmail">Email</Label>
-                      <Input
-                        type="email"
-                        name="email"
-                        id="userEmail"
-                        placeholder="Enter Email"
-                        value={this.state.email}
-                        onChange={this.onChange}
-                      />
-                    </FormGroup>
-                    <FormGroup className="login-group">
-                      <Label for="userPassword">Password</Label>
-                      <Input
-                        type="password"
-                        name="password"
-                        id="userPassword"
-                        placeholder="Enter Password"
-                        value={this.state.password}
-                        onChange={this.onChange}
-                      />
-                    </FormGroup>
-                    <AuthButton disabled={!this.validateForm()} onClick={this.onSubmit}>Submit</AuthButton>
-                  </Form>
-                </div>
-              </Col>
-            </Row>
-            <div class="overlay-container">
+      <Container className="login-page">
+        <Row>
+          <Col>
+            <div class="form-container sign-in-container">
+              <Row className="page-title">
+                <Center>
+                  <Logo src={logo} />
+                </Center>
+              </Row>
+              <Form>
+                <FormGroup className="login-group">
+                  <Col>
+                    <h1>Sign In</h1>
+                  </Col>
+                  <Label for="userEmail">Email</Label>
+                  <Input
+                    type="email"
+                    name="email"
+                    id="userEmail"
+                    placeholder="Enter Email"
+                    value={this.state.email}
+                    onChange={this.onChange}
+                  />
+                </FormGroup>
+                <FormGroup className="login-group">
+                  <Label for="userPassword">Password</Label>
+                  <Input
+                    type="password"
+                    name="password"
+                    id="userPassword"
+                    placeholder="Enter Password"
+                    value={this.state.password}
+                    onChange={this.onChange}
+                  />
+                </FormGroup>
+                <AuthButton disabled={!this.validateForm()} onClick={this.onSubmit}>Submit</AuthButton>
+              </Form>
+            </div>
+          </Col>
+          <Col>
               <div class="overlay">
                 <div class="overlay-panel overlay-right">
                   <Logo src={movie} />
                   <Logo src={book} />
                 </div>
               </div>
-            </div>
-          </Container>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
