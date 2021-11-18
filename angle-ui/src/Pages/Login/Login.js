@@ -62,7 +62,7 @@ class Login extends React.Component {
                   <Logo src={logo} />
                 </Center>
               </Row>
-              <Form>
+              <Form className="login-form">
                 <FormGroup className="login-group">
                   <Col>
                     <h1>Sign In</h1>

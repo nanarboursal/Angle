@@ -39,7 +39,7 @@ input {
   width: 125% !important;
 }
 
-form {
+.login-form {
   /* background-color: #FFFFFF; */
   display: flex;
   align-items: center;
