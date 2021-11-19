@@ -42,7 +42,7 @@ export default function Routes(props) {
       component: AddPlaylist
     },
     {
-      path: "/inspectmedia/:mediaType/:mediaID",
+      path: "/inspectmedia/:mediaType/:mediaID/:notes/:rating",
       component: InspectMedia
     },
     {

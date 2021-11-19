@@ -29,7 +29,9 @@ export const MediaCard = props => {
   const inspectMedia = (media) => {
     const mediaID = media.title + "&&&&" + media.author;
     const mediaType = media.mediaType;
-    history.push("/inspectmedia/" + mediaType + "/" + mediaID);
+    const notes = media.notes;
+    const rating = media.rating;
+    history.push("/inspectmedia/" + mediaType + "/" + mediaID + "/" + notes + "/" + rating);
   };
 
   return (
