@@ -7,6 +7,8 @@ import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import AddMedia from "./Pages/AddMedia/AddMedia";
 import AddPlaylist from "./Pages/AddPlaylist/AddPlaylist";
+import { InspectMedia } from "./Pages/InspectMedia/InspectMedia";
+import { InspectPlaylist } from "./Pages/InspectPlaylist/InspectPlaylist";
 
 export default function Routes(props) {
   //Add new routes in this array
@@ -38,6 +40,14 @@ export default function Routes(props) {
     {
       path: "/addplaylist",
       component: AddPlaylist
+    },
+    {
+      path: "/inspectmedia/:mediaID",
+      component: InspectMedia
+    },
+    {
+      path: "/inspectplaylist/:playlistName",
+      component: InspectPlaylist
     }
   ];
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
 import { deleteMedia } from "../../../Functions/UserFunctions";
+import { BsFillTrashFill, BsFillArrowUpRightCircleFill} from "react-icons/bs";
 import "./media-card.css";
 
 export const MediaCard = props => {
@@ -22,6 +23,11 @@ export const MediaCard = props => {
     });
   };
 
+  const inspectMedia = (media) => {
+    const mediaID = media.title + "&&&&" + media.author;
+    console.log(mediaID, " was clicked.");
+  };
+
   return (
     <div className="card-wrapper">
       <Card>
@@ -32,7 +38,8 @@ export const MediaCard = props => {
           <CardTitle className="med-title">{props.media.title}</CardTitle>
           <CardTitle className="med-author">{props.media.author}</CardTitle>
           <CardTitle className="med-rating">{props.media.rating}</CardTitle>
-          <a onClick={() => onDelete(props.media)}>X</a>
+          <a style={{cursor: "pointer"}} onClick={() => onDelete(props.media)}><BsFillTrashFill/></a>
+          <a style={{cursor: "pointer", marginLeft: 40}} onClick={() => inspectMedia(props.media)}><BsFillArrowUpRightCircleFill/></a>
         </CardBody>
       </Card>
     </div>

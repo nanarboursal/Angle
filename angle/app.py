@@ -14,7 +14,7 @@ app = Flask(__name__, static_folder='../angle-ui/build', static_url_path='/')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['MONGO_DBNAME'] = 'Angle'
-# URI goes here
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/Angle'
 app.config['JWT_SECRET_KEY'] = 'secret'
 
 mongo = PyMongo(app)
@@ -93,13 +93,13 @@ def add_media():
     response = libraries.find_one({'email': email})
     if response:
         if mediaType == "Book":
-            media = {'mediaType': "book", 'mediaID': title+"////"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
+            media = {'mediaType': "book", 'mediaID': title+"&&&&"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
             libraries.update(
                 {'email': email},
                 {'$push': {'books': media}}
             )
         elif mediaType == "Movie":
-            media = {'mediaType': "movie", 'mediaID': title+"////"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
+            media = {'mediaType': "movie", 'mediaID': title+"&&&&"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
             libraries.update(
                 {'email': email},
                 {'$push': {'movies': media}}
@@ -143,7 +143,7 @@ def delete_media():
     libraries = db.libraries
     email = request.get_json()['email']
     mediaType = request.get_json()['mediaType']
-    mediaID = request.get_json()['title'] + "////" + request.get_json()['author']
+    mediaID = request.get_json()['title'] + "&&&&" + request.get_json()['author']
 
     response = libraries.find_one({'email': email})
     if response:
