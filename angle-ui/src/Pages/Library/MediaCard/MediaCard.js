@@ -2,9 +2,12 @@ import React from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
 import { deleteMedia } from "../../../Functions/UserFunctions";
 import { BsFillTrashFill, BsFillArrowUpRightCircleFill} from "react-icons/bs";
+import { useHistory } from "react-router-dom";
 import "./media-card.css";
 
 export const MediaCard = props => {
+
+  const history = useHistory();
 
   const onDelete = (media) => {  
     const toBeDeleted = {
@@ -25,7 +28,8 @@ export const MediaCard = props => {
 
   const inspectMedia = (media) => {
     const mediaID = media.title + "&&&&" + media.author;
-    console.log(mediaID, " was clicked.");
+    const mediaType = media.mediaType;
+    history.push("/inspectmedia/" + mediaType + "/" + mediaID);
   };
 
   return (
