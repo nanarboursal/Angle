@@ -108,6 +108,34 @@ export const deleteMedia = media => {
     });
 };
 
+export const updateMedia = media => {
+  // used to determine email
+  // const theToken = localStorage.getItem("usertoken");
+  // const decodedToken = jwt_decode(theToken);
+  // console.log(decodedToken);
+  // const email = decodedToken.sub.email;
+  // console.log("this is the email after adding media", email);
+
+  return axios
+    .post("http://10.0.0.179:80/libraries/updatemedia", {
+      email: "nanarb@gmail.com", // have to fix later
+      mediaType: media.mediaType,
+      oldTitle: media.oldTitle,
+      oldAuthor: media.oldAuthor,
+      title: media.title,
+      author: media.author,
+      notes: media.notes,
+      rating: media.rating
+    })
+    .then(response => {
+      console.log("user functions response", response);
+      return response;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 export const addPlaylist = playlist => {
   // used to determine email
   // const theToken = localStorage.getItem("usertoken");

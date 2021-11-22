@@ -163,6 +163,39 @@ def delete_media():
 
     return jsonify({'result': result})
 
+@app.route('/libraries/updatemedia', methods=["POST"])
+def update_media():
+    libraries = db.libraries
+    email = request.get_json()['email']
+    mediaType = request.get_json()['mediaType']
+    oldTitle = request.get_json()['oldTitle']
+    oldAuthor = request.get_json()['oldAuthor']
+    oldMediaID = oldTitle + '&&&&' + oldAuthor
+
+    title = request.get_json()['title']
+    author = request.get_json()['author']
+    mediaID = title + '&&&&' + author
+    notes = request.get_json()['notes']
+    rating = request.get_json()['rating']
+
+    response = libraries.find_one({'email': email})
+    if response:
+        if mediaType == "book":
+            libraries.update(
+                {'email': email, 'books.mediaID': oldMediaID},
+                {'$set': {'books.$.title': title, 'books.$.author': author, 'books.$.notes': notes, 'books.$.rating': rating, 'books.$.mediaID': mediaID}},
+            )
+        elif mediaType == "movie":
+            libraries.update(
+                {'email': email, 'movies.mediaID': oldMediaID},
+                {'$set': {'movies.$.title': title, 'movies.$.author': author, 'movies.$.notes': notes, 'movies.$.rating': rating, 'movies.$.mediaID': mediaID}},
+            )
+        result = {"success": "media updated"}
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
 @app.route('/playlists/addplaylist', methods=["POST"])
 def add_playlist():
     playlists = db.playlists
