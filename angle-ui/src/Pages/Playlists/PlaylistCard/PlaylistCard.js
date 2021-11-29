@@ -2,9 +2,12 @@ import React from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
 import { deletePlaylist } from "../../../Functions/UserFunctions";
 import { BsFillTrashFill, BsFillArrowUpRightCircleFill} from "react-icons/bs";
+import { useHistory } from "react-router-dom";
 import "./playlist-card.css";
 
 export const PlaylistCard = props => {
+
+    const history = useHistory();
 
     const onDelete = (playlist) => {
         const toBeDeleted = {
@@ -22,7 +25,8 @@ export const PlaylistCard = props => {
     };
 
     const inspectPlaylist = (playlist) => {
-        console.log(playlist.playlistName, " was clicked.");
+        const playlistName = playlist.playlistName; 
+        history.push("/inspectplaylist/" + playlistName);
     };
 
     return (

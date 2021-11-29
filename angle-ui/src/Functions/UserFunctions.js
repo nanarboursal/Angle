@@ -64,12 +64,12 @@ export const getBooks = () => {
   //   email: "nanarb@gmail.com"
   // })
   return axios.get("http://10.0.0.179:80/libraries/getbooks")
-  .then(response => {
-    return response.data.result;
-  })
-  .catch(err => {
-    console.log(err);
-  });
+    .then(response => {
+      return response.data.result;
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const getMovies = () => {
@@ -77,12 +77,12 @@ export const getMovies = () => {
   //   email: "nanarb@gmail.com"
   // })
   return axios.get("http://10.0.0.179:80/libraries/getmovies")
-  .then(response => {
-    return response.data.result;
-  })
-  .catch(err => {
-    console.log(err);
-  });
+    .then(response => {
+      return response.data.result;
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const deleteMedia = media => {
@@ -165,12 +165,12 @@ export const getPlaylists = () => {
   //   email: "nanarb@gmail.com"
   // })
   return axios.get("http://10.0.0.179:80/playlists/getplaylists")
-  .then(response => {
-    return response.data.result;
-  })
-  .catch(err => {
-    console.log(err);
-  });
+    .then(response => {
+      return response.data.result;
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const deletePlaylist = playlist => {
@@ -193,3 +193,57 @@ export const deletePlaylist = playlist => {
       console.log(err);
     });
 };
+
+export const getPlaylistBooks = name => {
+  // return axios.get("http://10.0.0.179:80/libraries/getlibrary", {
+  //   email: "nanarb@gmail.com"
+  // })
+
+  return axios.get("http://10.0.0.179:80/playlists/getplaylistbooks:"+name)
+    .then(response => {
+      return response.data.result;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const getPlaylistMovies = name => {
+  // return axios.get("http://10.0.0.179:80/libraries/getlibrary", {
+  //   email: "nanarb@gmail.com"
+  // })
+
+  return axios.get("http://10.0.0.179:80/playlists/getplaylistmovies:"+name)
+    .then(response => {
+      return response.data.result;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const updatePlaylist = playlist => {
+  // used to determine email
+  // const theToken = localStorage.getItem("usertoken");
+  // const decodedToken = jwt_decode(theToken);
+  // console.log(decodedToken);
+  // const email = decodedToken.sub.email;
+  // console.log("this is the email after adding media", email);
+
+  return axios
+    .post("http://10.0.0.179:80/playlists/updateplaylist", {
+      email: "nanarb@gmail.com", // have to fix later
+      oldPlaylistName: playlist.oldPlaylistName,
+      playlistName: playlist.playlistName,
+      books: playlist.books,
+      movies: playlist.movies
+    })
+    .then(response => {
+      console.log("user functions response", response);
+      return response;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+

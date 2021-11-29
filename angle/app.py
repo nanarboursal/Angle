@@ -251,5 +251,62 @@ def delete_playlist():
 
     return jsonify({'result': result})
 
+@app.route('/playlists/getplaylistbooks:<name>', methods=["GET"])
+def get_playlist_books(name):
+    playlists = db.playlists
+    print("playlistname here")
+    print(name)
+    # email = request.get_json()['email']
+    # playlistName = request.query('playlistName')
+    playlistName = name
+
+    email = "nanarb@gmail.com"
+    response = playlists.find_one({'email': email})
+    if response:
+        myResponse = playlists.find_one({"playlists.playlistName": playlistName}, {"_id": 0, "playlists": {"$elemMatch": {'playlistName': playlistName}}})
+        result = myResponse['playlists'][0]['books']
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
+@app.route('/playlists/getplaylistmovies:<name>', methods=["GET"])
+def get_playlist_movies(name):
+    playlists = db.playlists
+    # email = request.get_json()['email']
+    # playlistName = request.params('playlistName')
+    playlistName = name
+
+    email = "nanarb@gmail.com"
+    response = playlists.find_one({'email': email})
+    if response:
+        myResponse = playlists.find_one({"playlists.playlistName": playlistName}, {"_id": 0, "playlists": {"$elemMatch": {'playlistName': playlistName}}})
+        result = myResponse['playlists'][0]['movies']
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
+@app.route('/playlists/updateplaylist', methods=["POST"])
+def update_playlist():
+    playlists = db.playlists
+    email = request.get_json()['email']
+    oldPlaylistName = request.get_json()['oldPlaylistName']
+    playlistName = request.get_json()['playlistName']
+    books = request.get_json()['books']
+    movies = request.get_json()['movies']
+
+    response = playlists.find_one({'email': email})
+    if response:
+        playlists.update(
+            {'email': email, 'playlists.playlistName': oldPlaylistName},
+            {'$set': {'playlists.$.books': books, 'playlists.$.movies': movies, 'playlists.$.playlistName': playlistName}},
+        )
+        result = {"success": "playlist updated"}
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
