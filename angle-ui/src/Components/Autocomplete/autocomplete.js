@@ -10,7 +10,7 @@ const Autocomplete = ({data, clickAction}) => {
             setSuggest([]);
         }else {
             const regex = new RegExp(`^${input}`, 'i');
-            setSuggest(data.sort().filter(v => regex.test(v.name))) 
+            setSuggest(data.sort().filter(v => regex.test(v.title))) 
         }
     }
 
@@ -18,9 +18,10 @@ const Autocomplete = ({data, clickAction}) => {
         if(suggest.length === 0){
             return null;
         }
+        console.log(suggest);
         return(
             <ul>
-                { suggest.map((item) => <li onClick={clickAction}>{item.name}</li>) }
+                { suggest.map((item) => <li onClick={clickAction}>{item.title}</li>) }
             </ul>
         )
     }
@@ -28,7 +29,7 @@ const Autocomplete = ({data, clickAction}) => {
     return (
         <div>
             <input onChange={onHandleChange} type="text"/>
-            {renderSuggestion}
+            {renderSuggestion()}
         </div>
     )
 }
