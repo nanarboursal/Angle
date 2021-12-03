@@ -3,7 +3,7 @@ import "./search-bar.css";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 
-function SearchBar({ placeholder, data }) {
+function SearchBar({ placeholder, data, clickEvent }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -46,8 +46,8 @@ function SearchBar({ placeholder, data }) {
         <div className="data-result">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
-              <a className="data-item" target="_blank">
-                <p>{value.title}</p> <p className="author">by {value.authors}</p>
+              <a className="data-item" target="_blank" onClick={() => clickEvent(value)}>
+                <p>{value.title}</p> <p className="author">by {value.author}</p>
               </a>
             );
           })}

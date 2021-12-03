@@ -57,6 +57,11 @@ class AddMedia extends React.Component {
     console.log("the rating is now", this.state.rating);
   }
 
+  clickEvent = (media) => {
+    this.setState({title: media.title});
+    this.setState({author: media.author});
+  }
+
   render() {
     return (
       <div>
@@ -92,7 +97,7 @@ class AddMedia extends React.Component {
           </Row>
           <Row>
             <Col>
-              <SearchBar placeholder="Enter a media title!" data={data} />
+              <SearchBar placeholder="Enter a media title!" data={data} clickEvent={this.clickEvent}/>
             </Col>
             <Col className="manual-add">
               <input
