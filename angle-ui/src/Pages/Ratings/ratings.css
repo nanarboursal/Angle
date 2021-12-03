@@ -1,3 +1,16 @@
 .ratings-title {
     text-align: center;
 }
+
+.filter-div{
+    background-color: #d3d3d3;
+    padding: 2%;
+    /* flex: 1; */
+    /* flex-direction: row; */
+    display: inline;
+    width: 50%;
+}
+
+.filter-button {
+    margin-top: 2%;
+}
