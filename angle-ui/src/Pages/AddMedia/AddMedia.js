@@ -61,7 +61,6 @@ class AddMedia extends React.Component {
     return (
       <div>
         <Container>
-          {console.log("this is the user type", this.state.mediaType)}
           <Row className="add-title">
             <Col>
               <h1>Add Your Media!</h1>

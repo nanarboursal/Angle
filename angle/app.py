@@ -14,7 +14,7 @@ app = Flask(__name__, static_folder='../angle-ui/build', static_url_path='/')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['MONGO_DBNAME'] = 'Angle'
-# URI goes here
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/Angle'
 app.config['JWT_SECRET_KEY'] = 'secret'
 
 mongo = PyMongo(app)
@@ -93,13 +93,13 @@ def add_media():
     response = libraries.find_one({'email': email})
     if response:
         if mediaType == "Book":
-            media = {'mediaType': "book", 'mediaID': title+"////"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
+            media = {'mediaType': "book", 'mediaID': title+"&&&&"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
             libraries.update(
                 {'email': email},
                 {'$push': {'books': media}}
             )
         elif mediaType == "Movie":
-            media = {'mediaType': "movie", 'mediaID': title+"////"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
+            media = {'mediaType': "movie", 'mediaID': title+"&&&&"+author, 'title': title, 'author': author, 'notes': notes, 'rating': rating}
             libraries.update(
                 {'email': email},
                 {'$push': {'movies': media}}
@@ -143,7 +143,7 @@ def delete_media():
     libraries = db.libraries
     email = request.get_json()['email']
     mediaType = request.get_json()['mediaType']
-    mediaID = request.get_json()['title'] + "////" + request.get_json()['author']
+    mediaID = request.get_json()['title'] + "&&&&" + request.get_json()['author']
 
     response = libraries.find_one({'email': email})
     if response:
@@ -158,6 +158,39 @@ def delete_media():
                 {'$pull': {'movies': {'mediaID': mediaID}}}
             )
         result = {"success": "media removed"}
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
+@app.route('/libraries/updatemedia', methods=["POST"])
+def update_media():
+    libraries = db.libraries
+    email = request.get_json()['email']
+    mediaType = request.get_json()['mediaType']
+    oldTitle = request.get_json()['oldTitle']
+    oldAuthor = request.get_json()['oldAuthor']
+    oldMediaID = oldTitle + '&&&&' + oldAuthor
+
+    title = request.get_json()['title']
+    author = request.get_json()['author']
+    mediaID = title + '&&&&' + author
+    notes = request.get_json()['notes']
+    rating = request.get_json()['rating']
+
+    response = libraries.find_one({'email': email})
+    if response:
+        if mediaType == "book":
+            libraries.update(
+                {'email': email, 'books.mediaID': oldMediaID},
+                {'$set': {'books.$.title': title, 'books.$.author': author, 'books.$.notes': notes, 'books.$.rating': rating, 'books.$.mediaID': mediaID}},
+            )
+        elif mediaType == "movie":
+            libraries.update(
+                {'email': email, 'movies.mediaID': oldMediaID},
+                {'$set': {'movies.$.title': title, 'movies.$.author': author, 'movies.$.notes': notes, 'movies.$.rating': rating, 'movies.$.mediaID': mediaID}},
+            )
+        result = {"success": "media updated"}
     else:
         result = {"error": "an error was encountered"}
 
@@ -213,6 +246,63 @@ def delete_playlist():
             {'$pull': {'playlists': {'playlistName': playlistName}}}
         )
         result = {"success": "playlist removed"}
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
+@app.route('/playlists/getplaylistbooks:<name>', methods=["GET"])
+def get_playlist_books(name):
+    playlists = db.playlists
+    print("playlistname here")
+    print(name)
+    # email = request.get_json()['email']
+    # playlistName = request.query('playlistName')
+    playlistName = name
+
+    email = "nanarb@gmail.com"
+    response = playlists.find_one({'email': email})
+    if response:
+        myResponse = playlists.find_one({"playlists.playlistName": playlistName}, {"_id": 0, "playlists": {"$elemMatch": {'playlistName': playlistName}}})
+        result = myResponse['playlists'][0]['books']
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
+@app.route('/playlists/getplaylistmovies:<name>', methods=["GET"])
+def get_playlist_movies(name):
+    playlists = db.playlists
+    # email = request.get_json()['email']
+    # playlistName = request.params('playlistName')
+    playlistName = name
+
+    email = "nanarb@gmail.com"
+    response = playlists.find_one({'email': email})
+    if response:
+        myResponse = playlists.find_one({"playlists.playlistName": playlistName}, {"_id": 0, "playlists": {"$elemMatch": {'playlistName': playlistName}}})
+        result = myResponse['playlists'][0]['movies']
+    else:
+        result = {"error": "an error was encountered"}
+
+    return jsonify({'result': result})
+
+@app.route('/playlists/updateplaylist', methods=["POST"])
+def update_playlist():
+    playlists = db.playlists
+    email = request.get_json()['email']
+    oldPlaylistName = request.get_json()['oldPlaylistName']
+    playlistName = request.get_json()['playlistName']
+    books = request.get_json()['books']
+    movies = request.get_json()['movies']
+
+    response = playlists.find_one({'email': email})
+    if response:
+        playlists.update(
+            {'email': email, 'playlists.playlistName': oldPlaylistName},
+            {'$set': {'playlists.$.books': books, 'playlists.$.movies': movies, 'playlists.$.playlistName': playlistName}},
+        )
+        result = {"success": "playlist updated"}
     else:
         result = {"error": "an error was encountered"}
 

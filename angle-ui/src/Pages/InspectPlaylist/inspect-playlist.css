@@ -1,0 +1,21 @@
+.inspect-playlist-title {
+    text-align: center;
+}
+
+.inspect-playlist-name {
+    margin-top: 1.5% !important;
+    margin-bottom: 1.5%;
+}
+
+.inspect-playlist-name input {
+    width: 70%;
+    height: 50px;
+    font-size: large;
+    padding: 1%
+}
+
+.save-btn {
+    text-align: center;
+    margin-top: 5% !important;
+    margin-bottom: 5%;
+}
