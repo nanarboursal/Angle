@@ -33,6 +33,21 @@ export const login = user => {
     });
 };
 
+export const resetPassword = user => {
+  return axios
+    .post("http://10.0.0.179:80/users/resetPassword", {
+      email: user.email,
+      newPassword: user.newPassword
+    })
+    .then(response => {
+      console.log(response.data);
+      return response.data;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 export const addMedia = media => {
   // used to determine email
   // const theToken = localStorage.getItem("usertoken");

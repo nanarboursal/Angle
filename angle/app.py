@@ -80,6 +80,26 @@ def login():
 
     return result
 
+@app.route('/users/resetPassword', methods=['POST'])
+def reset_password():
+    users = db.angleUsers
+    email = request.get_json()['email']
+    newPassword = bcrypt.generate_password_hash(
+        request.get_json()['newPassword']).decode('utf-8')
+
+    response = users.find_one({'email': email})
+
+    if response:
+        users.update(
+            {'email': email},
+            {'$set': {'password': newPassword}},
+        )
+        result = jsonify({"success": "password reset"})
+    else:
+        result = jsonify({"error": "Account doesn't exist."})
+
+    return result
+
 @app.route('/libraries/addmedia', methods=["POST"])
 def add_media():
     libraries = db.libraries
