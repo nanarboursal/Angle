@@ -74,47 +74,52 @@ class AddMedia extends React.Component {
           </Row>
           <Row className="media-type">
             <Col>
-              <p>Media Type: {this.state.mediaType}</p>
-            </Col>
-            <Col>
               <ButtonGroup>
                 <Button onClick={() => this.changeType("Book")}>Book</Button>
                 <Button onClick={() => this.changeType("Movie")}>Movie</Button>
               </ButtonGroup>
+            </Col>
+            <Col>
+              <p>Media Type: {this.state.mediaType}</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col></Col>
+            <Col className="manual-add">
+              <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Enter title."
+                value={this.state.title}
+                onChange={this.onChange}
+              ></input>
             </Col>
           </Row>
           <Row>
             <Col>
               <SearchBar placeholder="Enter a media title!" data={data} clickEvent={this.clickEvent}/>
             </Col>
+            <Col className="manual-add">
+              <input
+                type="text"
+                name="author"
+                id="author"
+                onChange={this.onChange}
+                value={this.state.author}
+                placeholder="Enter author or director."
+              ></input>
+            </Col>
           </Row>
           <Row>
-          <Col className="manual-add">
-            <input
-              type="text"
-              name="title"
-              id="title"
-              placeholder="Enter title."
-              value={this.state.title}
-              onChange={this.onChange}
-            ></input>
-          </Col>
-          <Col className="manual-add">
-            <input
-              type="text"
-              name="author"
-              id="author"
-              onChange={this.onChange}
-              value={this.state.author}
-              placeholder="Enter author or director."
-            ></input>
-          </Col>
-        </Row>
-          <Row>
+            <Col> </Col>
             <Col>
               <p>Choose a rating.</p>
               <Rating ratingValue={this.state.rating} onClick={(theRating) => this.handleRating(theRating)} />
             </Col>
+          </Row>
+          <Row>
+            <Col> </Col>
             <Col className="notes">
               <textarea
                 type="text"
