@@ -1,5 +1,5 @@
 import React from "react";
-import { login } from "../../Functions/UserFunctions";
+import { login, resetPassword } from "../../Functions/UserFunctions";
 import logo from "../../Images/angle-transparent.png";
 import book from "../../Images/BookIcon.png";
 import movie from "../../Images/MovieIcon.png";
@@ -12,7 +12,10 @@ import {
   Form,
   FormGroup,
   Label,
-  Input
+  Input,
+  Button,
+  Modal, ModalFooter,
+  ModalHeader, ModalBody
 } from "reactstrap";
 
 class Login extends React.Component {
@@ -20,10 +23,35 @@ class Login extends React.Component {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      resetPassModalEnabled: false,
+      resetPasswordEmail: "",
+      resetPasswordPassword: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onToggleModal = () => {
+    this.setState(prevState => ({
+      resetPassModalEnabled: !prevState.resetPassModalEnabled
+    }));
+  };
+
+  onResetPassword(e) {
+    const user = {
+      email: "nanarb@gmail.com",
+      newPassword: "123456789"
+    };
+
+    resetPassword(user).then(res => {
+      if (!res.error && !res.result) {
+        alert("Password Reset!");
+        window.location.reload();
+      } else {
+        alert("Invalid Information!");
+      }
+    });
   }
 
   onChange(e) {
@@ -40,6 +68,7 @@ class Login extends React.Component {
 
     login(user).then(res => {
       if (!res.error && !res.result) {
+        alert("Login Successful!");
         this.props.history.push("/");
       } else {
         alert("Invalid Information!");
@@ -56,12 +85,12 @@ class Login extends React.Component {
       <div className="login-page">
         <Row>
           <Col>
-            <div class="form-container sign-in-container">
-              <Row className="page-title">
-                <Center>
-                  <Logo src={logo} />
-                </Center>
-              </Row>
+            <Row>
+              <Center>
+                <Logo src={logo} />
+              </Center>
+            </Row>
+            <Row>
               <Form className="login-form">
                 <FormGroup className="login-group">
                   <Col>
@@ -90,18 +119,45 @@ class Login extends React.Component {
                     onChange={this.onChange}
                   />
                 </FormGroup>
+                <Button onClick={() => this.onToggleModal()} className="forgot-pass-button">Forgot Password?</Button>
                 <AuthButton disabled={!this.validateForm()} onClick={this.onSubmit}>Submit</AuthButton>
               </Form>
-            </div>
+            </Row>
           </Col>
           <Col>
-              <div class="overlay">
-                <div class="overlay-panel overlay-right">
-                  {/* <Logo src={movie} />
-                  <Logo src={book} /> */}
-                </div>
+            <div className="overlay">
+              <div className="overlay-panel overlay-right">
               </div>
+            </div>
           </Col>
+          <Modal isOpen={this.state.resetPassModalEnabled} toggle={() => this.onToggleModal()}>
+            <ModalHeader>Reset Password</ModalHeader>
+            <ModalBody>
+              <Input
+                type="email"
+                name="resetPasswordEmail"
+                id="userResetEmail"
+                className="modal-inputs"
+                placeholder="Enter email."
+                value={this.state.resetPasswordEmail}
+                onChange={this.onChange}>
+              </Input>
+            </ModalBody>
+            <ModalBody>
+              <Input
+                type="password"
+                name="resetPasswordPassword"
+                id="userResetPassword"
+                className="modal-inputs"
+                placeholder="Enter new password."
+                value={this.state.resetPasswordPassword}
+                onChange={this.onChange}>
+              </Input>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="primary" onClick={this.onResetPassword}>Reset</Button>
+            </ModalFooter>
+          </Modal>
         </Row>
       </div>
     );
