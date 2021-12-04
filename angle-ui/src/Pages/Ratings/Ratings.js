@@ -71,8 +71,8 @@ export default function Ratings() {
         setMovies(ratedAllMovies);
         break;
       default:
-        setBooks(ratedAllBooks.filter((book) => book.rating === filter));
-        setMovies(ratedAllMovies.filter((movie) => movie.rating === filter));
+        setBooks(ratedAllBooks.filter((book) => book.rating + "" === filter));
+        setMovies(ratedAllMovies.filter((movie) => movie.rating + "" === filter));
     }
   };
 
