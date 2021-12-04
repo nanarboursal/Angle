@@ -9,8 +9,6 @@ export default function Ratings() {
   const [books, setBooks] = useState([]);
   const [movies, setMovies] = useState([]);
   const [filter, setFilter] = useState("all");
-  const [filteredBooks, setFilteredBooks] = useState([]);
-  const [filteredMovies, setFilteredMoves] = useState([]);
   const [ratedAllBooks, setRatedAllBooks] = useState([]);
   const [ratedAllMovies, setRatedAllMovies] = useState([]);
 
@@ -67,7 +65,15 @@ export default function Ratings() {
   };
 
   const onSubmitFilter = () => {
-    // aneesh you're doing this here
+    switch(filter) {
+      case "all":
+        setBooks(ratedAllBooks);
+        setMovies(ratedAllMovies);
+        break;
+      default:
+        setBooks(ratedAllBooks.filter((book) => book.rating === filter));
+        setMovies(ratedAllMovies.filter((movie) => movie.rating === filter));
+    }
   };
 
   return (
