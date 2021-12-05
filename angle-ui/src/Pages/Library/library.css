@@ -1,7 +1,48 @@
-.lib-title {
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+.lib {
     text-align: center;
+    background-color: #8fa6ac;
+}
+
+.lib-title {
+    margin-top: 3%;
+    color: white;
+    /* text-shadow: 1px 1px 2px #dfcaa0; */
+    text-shadow: #293b3f 1px 0 10px;
+    font-size: 4rem;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: "Montserrat", sans-serif;
 }
 
 .add-buttons {
     margin: 1%;
+    background-color: white !important;
+    color: #293b3f  !important;
+    border: 4px solid #293b3f  !important;
+    width: 140px;
+    height: 70px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 45px  !important;
 }
+
+.add-buttons:hover {
+    margin: 1%;
+    background-color: #293b3f  !important;
+    color: white  !important;
+    border: 4px solid white  !important;
+    width: 140px;
+    height: 70px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 45px  !important;
+}
+
+.home-image {
+    width: 85%;
+    height: 600px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+  

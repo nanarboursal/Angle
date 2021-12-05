@@ -1,7 +1,7 @@
 .user-nav {
     font-size: 20px;
     font-weight: bold;
-    background-color: #ffeaa3;
+    background-color: #8a584c;
     width: 100%;
     padding: 0;
     height: auto;
@@ -25,7 +25,15 @@
 .item-nav {
     margin-right: 12px;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    color: black;
+}
+
+.the-brand {
+    color: #f5eacf !important;
+    font-size: 1.6rem !important;
+}
+
+.item-nav a {
+    color: #f5eacf !important;
 }
