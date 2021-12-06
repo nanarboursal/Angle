@@ -11,15 +11,28 @@
     flex-wrap: wrap;
   }
 
-  .card-wrapper {
+  .card-wrapper-playlist{
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
     flex-wrap: wrap;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
-    min-width: 400px;
+    min-width: 200px;
     cursor: default !important;
     align-content: center;
+    border-radius: 20px !important;
+  }
+
+  .card-wrapper-playlist-home {
+    background-color: #f5eacf !important;
+    border-radius: 20px !important;
+    max-width: 250px;
+  }
+
+  .play-title {
+    font-size: 1.3rem;
+    color: #568f8f;
+    text-shadow: #293b3f 0.5px 0 0.5px;
   }
   
   .flex-item {
@@ -37,6 +50,11 @@
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+  }
+
+  .num-items {
+    margin-top: 12% !important;
+    margin-bottom: 10% !important;
   }
   
   .wrap-reversez {

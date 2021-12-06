@@ -1,6 +1,7 @@
 .ratings-page {
     background-color: #8fa6ac;
-    height: 200vh;
+    height: auto;
+    padding-bottom: 10%;
 }
 
 .ratings-title {

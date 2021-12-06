@@ -3,6 +3,7 @@ import { Card, CardBody, CardTitle } from "reactstrap";
 import { deletePlaylist } from "../../../Functions/UserFunctions";
 import { BsFillTrashFill, BsFillArrowUpRightCircleFill} from "react-icons/bs";
 import { useHistory } from "react-router-dom";
+import { GoFileMedia } from "react-icons/go";
 import "./playlist-card.css";
 
 export const PlaylistCard = props => {
@@ -30,11 +31,11 @@ export const PlaylistCard = props => {
     };
 
     return (
-        <div className="card-wrapper">
-            <Card>
+        <div className="card-wrapper-playlist">
+            <Card className="card-wrapper-playlist-home">
                 <CardBody>
-                    <CardTitle className="med-title">{props.playlist.playlistName}
-                    </CardTitle>
+                    <CardTitle className="play-title">{props.playlist.playlistName}</CardTitle>
+                    <CardTitle className="num-items">{props.playlist.books.length+props.playlist.movies.length} <GoFileMedia/></CardTitle>
                     <a style={{cursor: "pointer"}} onClick={() => onDelete(props.playlist)}><BsFillTrashFill/></a>
                     <a style={{cursor: "pointer", marginLeft: 40}} onClick={() => inspectPlaylist(props.playlist)}><BsFillArrowUpRightCircleFill/></a>
                 </CardBody>

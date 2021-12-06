@@ -1,11 +1,100 @@
+.add-media-page {
+    background-color: #8fa6ac;
+    height: auto;
+    padding-bottom: 5%;
+}
+
 .add-title {
-    text-align: center;
+    margin-top: 3%;
+    color: white;
+    text-shadow: #293b3f 1px 0 10px;
+    font-size: 4rem;
+    font-family: "Montserrat", sans-serif;
 }
 
 .submit-btn {
+    margin: 1%;
+    background-color: white !important;
+    color: #293b3f  !important;
+    border: 4px solid #293b3f  !important;
+    width: 140px;
+    height: 70px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 45px  !important;
+}
+
+.submit-btn:hover {
+    /* margin: 1%; */
+    background-color: #293b3f !important;
+    color: white  !important;
+    border: 4px solid white  !important;
+    width: 140px;
+    height: 70px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 45px  !important;
+}
+
+.type-titles {
+    color: white;
+    font-weight: 600;
+    text-shadow: #293b3f 1px 0 10px;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.button-col {
     text-align: center;
-    margin-top: 5% !important;
-    margin-bottom: 5%;
+}
+
+.type-chooser-book {
+    background-color: white !important;
+    color: #293b3f  !important;
+    border: 4px solid #293b3f  !important;
+    width: 90px;
+    height: 45px;
+    font-size: 1rem  !important;
+}
+
+.type-chooser-movie {
+    background-color: white !important;
+    color: #293b3f  !important;
+    border: 4px solid #293b3f  !important;
+    width: 90px;
+    height: 45px;
+    font-size: 1rem  !important;
+}
+
+.type-chooser-book:hover {
+    background-color: #293b3f !important;
+    color: white  !important;
+    border: 4px solid white  !important;
+    width: 90px;
+    height: 45px;
+    font-size: 1rem  !important;
+}
+
+.type-chooser-movie:hover {
+    background-color: #293b3f !important;
+    color: white  !important;
+    border: 4px solid white  !important;
+    width: 90px;
+    height: 45px;
+    font-size: 1rem  !important;
+}
+
+.searchbar-div-block {
+    text-align: center;
+    margin: auto;
+}
+
+.type-test {
+    color: #8a584c;
+    text-shadow: white 1px 0 10px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
 }
 
 .manual-add {
@@ -14,8 +103,11 @@
 }
 
 .manual-add input {
-    width: 100%;
-    height: 40px;
+    width: 95% !important;
+    height: 60px !important;
+    border: 4px solid #293b3f  !important;
+    padding: 7px;
+    border-radius: 8px;
 }
 
 .notes textarea {
@@ -23,8 +115,10 @@
     height: 400px;
     padding: 2%;
     margin-top: 5%;
+    border: 4px solid #293b3f  !important;
+    border-radius: 8px;
 }
 
 .media-type {
-    margin-top: 2% !important;
+    margin-top: 5% !important;
 }
