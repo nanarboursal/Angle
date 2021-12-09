@@ -88,6 +88,7 @@ class AddPlaylist extends React.Component {
                     <td style={{fontStyle: "italic", fontWeight: "bold"}}>{book.title}</td>
                     <td>{book.author}</td>
                     <td><Button style={{width: "50px", backgroundColor: 'white', color: "#293b3f", borderWidth: "4px", borderColor: "#293b3f", fontSize: "1.3rem", borderRadius: 8 }} onClick={() => this.onRemoveBookFromPlaylist(book)}> - </Button></td>
+                    <td>See Media</td>
                 </tr>
             )
         })
