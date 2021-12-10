@@ -2,9 +2,9 @@
 
 .login-page {
   align-items: center;
-  background-color: #ffffff;
+  background-color: #f5eacf;
   width: 100%;
-  height: 92vh;
+  height: 90vh;
 }
 
 .login-input {
@@ -25,18 +25,18 @@
 }
 
 .overlay {
-  background: #ff416c;
+  background: #f5eacf;
   background: -webkit-linear-gradient(
     to right,
-    #ee7724,
-    #d8363a,
-    #dd3675,
-    #b44593
+    #f5eacf
+    #8a584c,
+    #8fa6ac,
+    #85865f
   );
-  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  background: linear-gradient(to right, #f5eacf, #8fa6ac, #85865f);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 95vh;
+  height: 90vh;
   background-position: right;
 }
 
