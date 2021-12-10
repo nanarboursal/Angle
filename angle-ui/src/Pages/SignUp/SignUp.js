@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { login, register } from "../../Functions/UserFunctions";
+import { AuthButton } from "../Login/Login.styles";
 import "./signup.css";
 import {
   Container,
@@ -77,76 +78,85 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="signup-page">
-        <Container>
-         <Row className="page-title">
-            <Col>
-              <h1>Sign Up</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form>
-              <FormGroup className="signup-group">
+      <div className="login-page">
+        <Row>
+          <Col>
+            <Row>
+              <Form className="login-form">
+                <FormGroup className="login-group">
+                  <Col>
+                    <h1>Sign Up</h1>
+                  </Col>
                   <Label for="first_name">First Name</Label>
                   <Input
                     type="text"
                     name="first_name"
                     id="first_name"
                     placeholder="Enter First Name"
+                    className="login-input"
                     value={this.state.first_name}
                     onChange={this.onChange}
                   />
                 </FormGroup>
-                <FormGroup className="signup-group">
+                <FormGroup className="login-group">
                   <Label for="last_name">Last Name</Label>
                   <Input
                     type="text"
                     name="last_name"
                     id="last_name"
                     placeholder="Enter Last Name"
+                    className="login-input"
                     value={this.state.last_name}
                     onChange={this.onChange}
                   />
                 </FormGroup>
-                <FormGroup className="signup-group">
+                <FormGroup className="login-group">
                   <Label for="userEmail">Email</Label>
                   <Input
                     type="email"
                     name="email"
                     id="userEmail"
                     placeholder="Enter Email"
+                    className="login-input"
                     value={this.state.email}
                     onChange={this.onChange}
                   />
                 </FormGroup>
-                <FormGroup className="signup-group">
+                <FormGroup className="login-group">
                   <Label for="userPassword">Password</Label>
                   <Input
                     type="password"
                     name="password"
                     id="userPassword"
                     placeholder="Enter Password"
+                    className="login-input"
                     value={this.state.password}
                     onChange={this.onChange}
                   />
                 </FormGroup>
-                <FormGroup className="signup-group">
+                <FormGroup className="login-group">
                   <Label for="confirmPassword">Confirm Password</Label>
                   <Input
                     type="password"
                     name="confirmPassword"
                     id="confirmPassword"
                     placeholder="Re-enter Password"
+                    className="login-input"
                     value={this.state.confirmPassword}
                     onChange={this.onChange}
                   />
                 </FormGroup>
-                <Button className="signup-group"  onClick={this.onSubmit} disabled={!this.validateForm()}>Submit</Button>
+                <AuthButton className="login-group" onClick={this.onSubmit} disabled={!this.validateForm()}>Submit</AuthButton>
               </Form>
-            </Col>
-          </Row>
-          </Container>
+            </Row>
+          </Col>
+          <Col>
+            <div className="overlay">
+              <div className="overlay-panel overlay-right">
+              </div>
+            </div>
+          </Col>
+        </Row>
       </div>
     );
   }

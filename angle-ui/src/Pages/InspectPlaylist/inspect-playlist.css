@@ -1,21 +1,87 @@
+.inspect-playlist-page {
+    background-color: #8fa6ac;
+    height: auto;
+    padding-bottom: 5%;
+}
+
 .inspect-playlist-title {
+    margin-top: 3%;
+    color: white;
+    text-shadow: #293b3f 1px 0 10px;
+    font-size: 4rem;
+    font-family: "Montserrat", sans-serif;
     text-align: center;
 }
 
 .inspect-playlist-name {
     margin-top: 1.5% !important;
     margin-bottom: 1.5%;
+    text-align: center;
 }
 
 .inspect-playlist-name input {
     width: 70%;
-    height: 50px;
+    height: 60px;
     font-size: large;
-    padding: 1%
+    padding: 1%;
+    border: 4px solid #293b3f  !important;
+    border-radius: 8px;
 }
 
-.save-btn {
+.save-play-button-col {
     text-align: center;
-    margin-top: 5% !important;
-    margin-bottom: 5%;
+}
+
+.save-playlist-btn {
+    /* margin: 1%; */
+    margin: auto;
+    background-color: white !important;
+    color: #293b3f  !important;
+    border: 4px solid #293b3f  !important;
+    width: 140px;
+    height: 70px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 45px  !important;
+}
+
+.save-playlist-btn:hover {
+    /* margin: 1%; */
+    background-color: #293b3f !important;
+    color: white  !important;
+    border: 4px solid white  !important;
+    width: 140px;
+    height: 70px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 45px  !important;
+}
+
+.inspect-table-list-div{
+    background-color: #ededca;
+    margin: auto;
+    border: 4px solid #293b3f;
+    border-radius: 10px;
+    padding: 1.5%;
+    width: 90%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.inspect-table-top-header-title {
+    margin-top: 1%;
+    color: white;
+    text-shadow: #293b3f 1px 0 10px;
+    font-size: 2.2rem;
+    font-family: "Montserrat", sans-serif;
+    /* text-align: center; */
+}
+
+.inspect-table-top-title {
+    /* margin-top: 1%; */
+    color: #293b3f;
+    text-shadow: white 1px 0 10px;
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
+    /* text-align: center; */
 }

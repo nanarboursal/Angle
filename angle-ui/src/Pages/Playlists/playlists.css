@@ -1,7 +1,49 @@
-.playlists-title {
+.playlists-page{
     text-align: center;
+    background-color: #8fa6ac;
+    height: auto;
+    padding-bottom: 5%;
 }
 
-.add-buttons {
+.playlists-title {
+    margin-top: 3%;
+    color: white;
+    text-shadow: #293b3f 1px 0 10px;
+    font-size: 4rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.playlist-add-buttons {
     margin: 1%;
+    background-color: white !important;
+    color: #293b3f  !important;
+    border: 4px solid #293b3f  !important;
+    width: 140px;
+    height: 70px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 45px  !important;
+}
+
+.playlist-add-buttons:hover {
+    margin: 1%;
+    background-color: #293b3f  !important;
+    color: white  !important;
+    border: 4px solid white  !important;
+    width: 140px;
+    height: 70px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 45px  !important;
+}
+
+.playlists-list-div{
+    background-color: #ededca;
+    margin: auto;
+    border: 4px solid #293b3f;
+    border-radius: 10px;
+    padding: 1.5%;
+    width: 90%;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }

@@ -4,6 +4,7 @@ import "./library.css";
 import { isLoggedIn } from "../../Functions/Authentication";
 import MediaCard from "./MediaCard/MediaCard";
 import { getBooks, getMovies } from "../../Functions/UserFunctions";
+import backgroundHeader from "../../Images/bookshelf.jpg";
 
 export default function Library() {
   const [books, setBooks] = useState([]);
@@ -43,11 +44,14 @@ export default function Library() {
   });
 
   return (
-    <div className="lib-title">
+    <div className="lib">
+      <header>
+        <img className="home-image" src={backgroundHeader} alt="background-img"></img>
+      </header>
       <Container>
         <Row>
           <Col>
-            <h1>Your Library</h1>
+            <h1 className="lib-title">Your Library</h1>
           </Col>
         </Row>
         <Row>

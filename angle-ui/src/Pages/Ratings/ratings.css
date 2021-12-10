@@ -1,16 +1,74 @@
+.ratings-page {
+    background-color: #8fa6ac;
+    height: auto;
+    padding-bottom: 10%;
+}
+
 .ratings-title {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    color: white;
+    text-shadow: #293b3f 1px 0 10px;
+    font-size: 4rem;
+    font-family: "Montserrat", sans-serif;
     text-align: center;
 }
 
 .filter-div{
-    background-color: #d3d3d3;
+    background-color: #FAF9F6;
+    border: 4px solid #293b3f;
+    border-radius: 15px;
     padding: 2%;
-    /* flex: 1; */
-    /* flex-direction: row; */
-    display: inline;
+    margin: auto;
     width: 50%;
+    text-align: center;
 }
 
 .filter-button {
-    margin-top: 2%;
+    margin-top: 3%;
+    background-color: white !important;
+    color: #293b3f  !important;
+    border: 4px solid #293b3f  !important;
+    width: 100px;
+    height: 50px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 30px  !important;
+}
+
+.filter-button:hover {
+    margin-top: 3%;
+    background-color: #293b3f !important;
+    color: white !important;
+    border: 4px solid white  !important;
+    width: 100px;
+    height: 50px;
+    font-size: 1.3rem  !important;
+    border-radius: 8px  !important;
+    line-height: 30px  !important;
+}
+
+hr {
+    color: #293b3f !important;
+}
+
+.media-ratings-div{
+    background-color: #f5eacf;
+    margin: auto;
+    border: 4px solid #293b3f;
+    border-radius: 10px;
+    padding: 1.5%;
+    width: 90%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.ratings-div-title {
+    margin-top: 1%;
+    margin-bottom: 2%;
+    color: #293b3f ;
+    text-shadow: white 1px 0 10px;
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
 }

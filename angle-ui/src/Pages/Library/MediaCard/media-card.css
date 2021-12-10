@@ -17,14 +17,38 @@
     flex-wrap: wrap;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
-    min-width: 400px;
+    min-width: 200px;
     cursor: default !important;
     align-content: center;
+    border-radius: 20px !important;
+  }
+
+  .card-wrapper-home {
+    background-color: #f5eacf !important;
+    border-radius: 20px !important;
+    max-width: 250px;
+  }
+
+  .pic-dim {
+    width: 190px !important;
+    height: 150px !important;
+    padding-left: 10%;
+    padding-top: 10%;
+  }
+
+  .med-title {
+    font-style: italic;
+    font-size: 1.3rem;
+  }
+
+  .med-rating {
+    margin-bottom: 10% !important;
   }
   
   .flex-item {
     margin: 3%;
   }
+  
   
   .flex-container {
     padding: 0;

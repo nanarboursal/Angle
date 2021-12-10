@@ -53,37 +53,42 @@ class AddMedia extends React.Component {
   }
 
   handleRating = (rate) => {
-    this.setState({rating: rate});
+    this.setState({ rating: rate });
     console.log("the rating is now", this.state.rating);
   }
 
   clickEvent = (media) => {
-    this.setState({title: media.title});
-    this.setState({author: media.author});
+    this.setState({ title: media.title });
+    this.setState({ author: media.author });
   }
 
   render() {
     return (
-      <div>
+      <div className="add-media-page">
         <Container>
-          <Row className="add-title">
+          <Row>
             <Col>
-              <h1>Add Your Media!</h1>
+              <h1 className="add-title">Add New Media</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <SearchBar placeholder="Enter a media title!" data={data} clickEvent={this.clickEvent} />
             </Col>
           </Row>
           <Row className="media-type">
             <Col>
               <ButtonGroup>
-                <Button onClick={() => this.changeType("Book")}>Book</Button>
-                <Button onClick={() => this.changeType("Movie")}>Movie</Button>
+                <Button className="type-chooser-book" onClick={() => this.changeType("Book")}>Book</Button>
+                <Button className="type-chooser-movie" onClick={() => this.changeType("Movie")}>Movie</Button>
               </ButtonGroup>
             </Col>
             <Col>
-              <p>Media Type: {this.state.mediaType}</p>
+              <p className="type-titles">Media Type</p>
+              <p className="type-test">:  {this.state.mediaType}</p>
             </Col>
           </Row>
           <Row>
-            <Col></Col>
             <Col className="manual-add">
               <input
                 type="text"
@@ -94,11 +99,12 @@ class AddMedia extends React.Component {
                 onChange={this.onChange}
               ></input>
             </Col>
+            <Col>
+              <p className="type-titles">Choose a rating.</p>
+              <Rating ratingValue={this.state.rating} fillColor="#8a584c" emptyColor="white" onClick={(theRating) => this.handleRating(theRating)} />
+            </Col>
           </Row>
           <Row>
-            <Col>
-              <SearchBar placeholder="Enter a media title!" data={data} clickEvent={this.clickEvent}/>
-            </Col>
             <Col className="manual-add">
               <input
                 type="text"
@@ -109,16 +115,6 @@ class AddMedia extends React.Component {
                 placeholder="Enter author or director."
               ></input>
             </Col>
-          </Row>
-          <Row>
-            <Col> </Col>
-            <Col>
-              <p>Choose a rating.</p>
-              <Rating ratingValue={this.state.rating} onClick={(theRating) => this.handleRating(theRating)} />
-            </Col>
-          </Row>
-          <Row>
-            <Col> </Col>
             <Col className="notes">
               <textarea
                 type="text"
@@ -130,9 +126,11 @@ class AddMedia extends React.Component {
               ></textarea>
             </Col>
           </Row>
-          <Row className="submit-btn">
+          <Row>
             <Col>
-              <Button onClick={this.onSubmit}>Submit</Button>
+              <div className="button-col">
+                <Button className="submit-btn" onClick={this.onSubmit}>Submit</Button>
+              </div>
             </Col>
           </Row>
         </Container>

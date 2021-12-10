@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { getBooks, getMovies, updateMedia } from "../../Functions/UserFunctions";
 import { Container, Row, Col, Button } from "reactstrap";
 import { Rating, RatingView } from "react-simple-star-rating";
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom';
+import movieImage from "../../Images/MovieIcon.png";
+import bookImage from "../../Images/BookIcon.png";
 
 import "./inspect-media.css";
 
@@ -65,25 +67,26 @@ export const InspectMedia = (props) => {
 
 
   return (
-    <div>
+    <div className="inspect-media-page">
       <Container>
-        <Row className="add-title">
+        <Row>
           <Col>
-            <h1>Inspect Media</h1>
+            <h1 className="inspect-media-title">Inspect Media</h1>
           </Col>
         </Row>
         <Row>
           <Col>
-            {/* picture goes here */}
+            <img src={mediaType == "book" ? bookImage : movieImage} alt="spec-media" />
           </Col>
           <Col>
-            <Row className="media-type">
+            <Row>
               <Col>
-                <p>Media Type: {mediaType}</p>
+                <p className="inspect-type-titles">Media Type</p>
+                <p className="inspect-type-test">: {mediaType.charAt(0).toUpperCase() + mediaType.slice(1)}</p>
               </Col>
             </Row>
             <Row>
-              <Col className="manual-add">
+              <Col className="inspect-manual">
                 <input
                   type="text"
                   name="title"
@@ -95,7 +98,7 @@ export const InspectMedia = (props) => {
               </Col>
             </Row>
             <Row>
-              <Col className="manual-add">
+              <Col className="inspect-manual">
                 <input
                   type="text"
                   name="author"
@@ -108,12 +111,12 @@ export const InspectMedia = (props) => {
             </Row>
             <Row>
               <Col>
-                <p>Rating</p>
-                <Rating ratingValue={theRating} onClick={(theRating) => changeRating(theRating)} />
+                <p className="inspect-type-titles">Rating</p>
+                <Rating fillColor="#8a584c" emptyColor="white" ratingValue={theRating} onClick={(theRating) => changeRating(theRating)} />
               </Col>
             </Row>
             <Row>
-              <Col className="notes">
+              <Col className="inspect-notes">
                 <textarea
                   type="text"
                   name="notes"
@@ -127,9 +130,11 @@ export const InspectMedia = (props) => {
           </Col>
         </Row>
 
-        <Row className="submit-btn">
+        <Row>
           <Col>
-            <Button onClick={onSubmit}>Save</Button>
+            <div className="save-media-btn-col">
+              <Button className="save-media-btn" onClick={onSubmit}>Save</Button>
+            </div>
           </Col>
         </Row>
       </Container>

@@ -35,7 +35,7 @@ export default function Ratings() {
     return (
       <Row>
         <Col>
-          <p>{book.title}</p>
+          <p style={{ fontStyle: "italic" }}>{book.title}</p>
         </Col>
         <Col>
           <RatingView ratingValue={book.rating} />
@@ -49,7 +49,7 @@ export default function Ratings() {
     return (
       <Row>
         <Col>
-          <p>{movie.title}</p>
+          <p style={{ fontStyle: "italic" }}>{movie.title}</p>
         </Col>
         <Col>
           <RatingView ratingValue={movie.rating} />
@@ -65,7 +65,7 @@ export default function Ratings() {
   };
 
   const onSubmitFilter = () => {
-    switch(filter) {
+    switch (filter) {
       case "all":
         setBooks(ratedAllBooks);
         setMovies(ratedAllMovies);
@@ -77,70 +77,70 @@ export default function Ratings() {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col className="ratings-title">
-          <h1>Your Ratings</h1>
-        </Col>
-      </Row>
-      <Row className="filter-div">
-        <Col>
-          <Form>
-            <FormGroup onChange={onChangeFilter} tag="fieldset">
-              <legend>Filter</legend>
-              <FormGroup check inline>
-                <Label check>
-                  <Input defaultChecked value="all" type="radio" name="filter" id="radio0" />{' '}
-                  All Ratings
-                </Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Label check>
-                  <Input type="radio" value="1" name="filter" id="radio1" />{' '}
-                  1 Star
-                </Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Label check>
-                  <Input type="radio" value="2" name="filter" id="radio2" />{' '}
-                  2 Stars
-                </Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Label check>
-                  <Input type="radio" value="3" name="filter" id="radio3" />{' '}
-                  3 Stars
-                </Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Label check>
-                  <Input type="radio" value="4" name="filter" id="radio4" />{' '}
-                  4 Stars
-                </Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Label check>
-                  <Input type="radio" value="5" name="filter" id="radio5" />{' '}
-                  5 Stars
-                </Label>
-              </FormGroup>
-            </FormGroup>
-          </Form>
-          <Button onClick={onSubmitFilter} className="filter-button">Filter</Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h1>Book Ratings</h1>
-        </Col>
-      </Row>
-      {bookRatings}
-      <Row>
-        <Col>
-          <h1>Movie Ratings</h1>
-        </Col>
-      </Row>
-      {movieRatings}
-    </Container>
+    <div className="ratings-page">
+      <Container>
+        <Row>
+          <Col>
+            <h1 className="ratings-title">Your Ratings</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div  className="filter-div">
+              <Form>
+                <FormGroup onChange={onChangeFilter} tag="fieldset">
+                  <legend>Filter</legend>
+                  <FormGroup check inline>
+                    <Label check>
+                      <Input defaultChecked value="all" type="radio" name="filter" id="radio0" />{' '}
+                      All Ratings
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check inline>
+                    <Label check>
+                      <Input type="radio" value="1" name="filter" id="radio1" />{' '}
+                      1 Star
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check inline>
+                    <Label check>
+                      <Input type="radio" value="2" name="filter" id="radio2" />{' '}
+                      2 Stars
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check inline>
+                    <Label check>
+                      <Input type="radio" value="3" name="filter" id="radio3" />{' '}
+                      3 Stars
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check inline>
+                    <Label check>
+                      <Input type="radio" value="4" name="filter" id="radio4" />{' '}
+                      4 Stars
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check inline>
+                    <Label check>
+                      <Input type="radio" value="5" name="filter" id="radio5" />{' '}
+                      5 Stars
+                    </Label>
+                  </FormGroup>
+                </FormGroup>
+              </Form>
+              <Button onClick={onSubmitFilter} className="filter-button">Filter</Button>
+            </div>
+          </Col>
+        </Row>
+        <div className="media-ratings-div">
+          <h1 className="ratings-div-title">Book Ratings</h1>
+          {bookRatings}
+        </div>
+        <div className="media-ratings-div">
+          <h1 className="ratings-div-title">Movie Ratings</h1>
+          {movieRatings}
+        </div>
+      </Container>
+    </div>
   );
 }

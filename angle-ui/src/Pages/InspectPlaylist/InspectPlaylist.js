@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getBooks, getMovies, getPlaylistBooks, getPlaylistMovies, updatePlaylist } from "../../Functions/UserFunctions";
+import { BsArrowUpRightCircleFill, BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import { Container, Row, Col, Table, Button } from "reactstrap";
 import { Rating, RatingView } from "react-simple-star-rating";
 import { useParams, useHistory } from 'react-router-dom'
@@ -38,6 +39,7 @@ export const InspectPlaylist = (props) => {
     getBooks().then(res => {
       if (!res.error && !res.result) {
         setLibraryBooks(res);
+        // setLibraryBooks(res.filter(checkIfBookAlreadyInPlaylist));
       } else {
         alert("error");
       }
@@ -45,11 +47,28 @@ export const InspectPlaylist = (props) => {
     getMovies().then(res => {
       if (!res.error && !res.result) {
         setLibraryMovies(res);
+        // setLibraryMovies(res.filter(checkIfMovieAlreadyInPlaylist));
       } else {
         alert("error");
       }
     });
   }, []);
+
+  // function checkIfBookAlreadyInPlaylist(book){
+  //   const tryToFilter = books.filter(findBook => findBook.mediaID === book.mediaID);
+  //   if(tryToFilter.length > 0){
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // };
+
+  // function checkIfMovieAlreadyInPlaylist(movie){
+  //   if(!movies.includes(movie)){
+  //     return true;
+  //   }
+  //   return false;
+  // };
 
   const changePlaylistName = playlistName => {
     setPlaylistName(playlistName.target.value);
@@ -81,9 +100,9 @@ export const InspectPlaylist = (props) => {
     return libraryBooks.map((book, index) => {
       return (
         <tr key={book.title}>
-          <td>{book.title}</td>
+          <td style={{ fontStyle: "italic", fontWeight: "bold" }}>{book.title}</td>
           <td>{book.author}</td>
-          <td><Button onClick={() => onAddBookToPlaylist(book)}> + </Button></td>
+          <td><Button style={{ width: "50px", backgroundColor: 'white', color: "#293b3f", borderWidth: "4px", borderColor: "#293b3f", fontSize: "1.3rem", borderRadius: 8 }} onClick={() => onAddBookToPlaylist(book)}> + </Button></td>
         </tr>
       )
     })
@@ -93,9 +112,9 @@ export const InspectPlaylist = (props) => {
     return libraryMovies.map((movie, index) => {
       return (
         <tr key={movie.title}>
-          <td>{movie.title}</td>
+          <td style={{ fontStyle: "italic", fontWeight: "bold" }}>{movie.title}</td>
           <td>{movie.author}</td>
-          <td><Button onClick={() => onAddMovieToPlaylist(movie)}> + </Button></td>
+          <td><Button style={{ width: "50px", backgroundColor: 'white', color: "#293b3f", borderWidth: "4px", borderColor: "#293b3f", fontSize: "1.3rem", borderRadius: 8 }} onClick={() => onAddMovieToPlaylist(movie)}> + </Button></td>
         </tr>
       )
     })
@@ -105,9 +124,10 @@ export const InspectPlaylist = (props) => {
     return books.map((book, index) => {
       return (
         <tr key={book.title}>
-          <td>{book.title}</td>
+          <td style={{ fontStyle: "italic", fontWeight: "bold" }}>{book.title}</td>
           <td>{book.author}</td>
-          <td><Button onClick={() => onRemoveBookFromPlaylist(book)}> - </Button></td>
+          <td><Button style={{ width: "50px", backgroundColor: 'white', color: "#293b3f", borderWidth: "4px", borderColor: "#293b3f", fontSize: "1.3rem", borderRadius: 8 }} onClick={() => onRemoveBookFromPlaylist(book)}> - </Button></td>
+          <td><a style={{cursor: "pointer"}} onClick={() => inspectMedia(book)}><BsArrowUpRightCircleFill/></a></td>
         </tr>
       )
     })
@@ -117,13 +137,22 @@ export const InspectPlaylist = (props) => {
     return movies.map((movie, index) => {
       return (
         <tr key={movie.title}>
-          <td>{movie.title}</td>
+          <td style={{ fontStyle: "italic", fontWeight: "bold" }}>{movie.title}</td>
           <td>{movie.author}</td>
-          <td><Button onClick={() => onRemoveMovieFromPlaylist(movie)}> - </Button></td>
+          <td><Button style={{ width: "50px", backgroundColor: 'white', color: "#293b3f", borderWidth: "4px", borderColor: "#293b3f", fontSize: "1.3rem", borderRadius: 8 }} onClick={() => onRemoveMovieFromPlaylist(movie)}> - </Button></td>
+          <td><a style={{cursor: "pointer"}} onClick={() => inspectMedia(movie)}><BsArrowUpRightCircleFill/></a></td>
         </tr>
       )
     })
   }
+
+  const inspectMedia = (media) => {
+    const mediaID = media.title + "&&&&" + media.author;
+    const mediaType = media.mediaType;
+    const notes = media.notes;
+    const rating = media.rating;
+    history.push("/inspectmedia/" + mediaType + "/" + mediaID + "/" + notes + "/" + rating);
+  };
 
   const onAddBookToPlaylist = (book) => {
     setBooks(books.concat(book));
@@ -137,15 +166,15 @@ export const InspectPlaylist = (props) => {
 
   const removeBookFromLibraryOptions = (removedBook) => {
     setLibraryBooks(libraryBooks.filter(function (book) {
-        return book !== removedBook
-      })
+      return book !== removedBook
+    })
     );
   }
 
   const removeMovieFromLibraryOptions = (removedMovie) => {
     setLibraryMovies(libraryMovies.filter(function (movie) {
-        return movie !== removedMovie
-      })
+      return movie !== removedMovie
+    })
     );
   }
 
@@ -159,138 +188,149 @@ export const InspectPlaylist = (props) => {
 
   const onRemoveBookFromPlaylist = (removedBook) => {
     setBooks(books.filter(function (book) {
-        return book !== removedBook
-      })
+      return book !== removedBook
+    })
     );
     addBookBackToLib(removedBook);
   }
 
   const onRemoveMovieFromPlaylist = (removedMovie) => {
     setMovies(movies.filter(function (movie) {
-        return movie !== removedMovie
-      })
+      return movie !== removedMovie
+    })
     );
     addMovieBackToLib(removedMovie);
   }
 
   return (
-    <Container>
-      <Row className="inspect-playlist-title">
-        <Col>
-          <h1>Edit Playlist</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col className="inspect-playlist-name">
-          <input
-            type="text"
-            name="playlistName"
-            id="playlistName"
-            placeholder="Enter playlist name."
-            value={thePlaylistName}
-            onChange={changePlaylistName}
-          ></input>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h1>In Your Playlist</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>Books</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Table>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Add to Playlist?</th>
-              </tr>
-            </thead>
-            <tbody>
-              {renderPlaylistBookTableData()}
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>Movies</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Table>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Add to Playlist?</th>
-              </tr>
-            </thead>
-            <tbody>
-              {renderPlaylistMovieTableData()}
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h1>Library Options</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>Books</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Table>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Add to Playlist?</th>
-              </tr>
-            </thead>
-            <tbody>
-              {renderBookTableData()}
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>Movies</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Table>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Add to Playlist?</th>
-              </tr>
-            </thead>
-            <tbody>
-              {renderMovieTableData()}
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
-      <Row className="save-btn">
-        <Col>
-          <Button onClick={onSubmit}>Save</Button>
-        </Col>
-      </Row>
-    </Container>
+    <div className="inspect-playlist-page">
+      <Container>
+        <Row>
+          <Col>
+            <h1 className="inspect-playlist-title">Inspect Playlist</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="inspect-playlist-name">
+            <input
+              type="text"
+              name="playlistName"
+              id="playlistName"
+              placeholder="Enter playlist name."
+              value={thePlaylistName}
+              onChange={changePlaylistName}
+            ></input>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h1 className="inspect-table-top-header-title">In Your Playlist</h1>
+          </Col>
+        </Row>
+        <div className="inspect-table-list-div">
+
+          <Row>
+            <Col>
+              <h2 className="inspect-table-top-title">Books</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Add to Playlist?</th>
+                    <th>See Media</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {renderPlaylistBookTableData()}
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <h2 className="inspect-table-top-title">Movies</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Add to Playlist?</th>
+                    <th>See Media</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {renderPlaylistMovieTableData()}
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+        </div>
+        <Row>
+          <Col>
+            <h1 className="inspect-table-top-header-title">Library Options</h1>
+          </Col>
+        </Row>
+        <div className="inspect-table-list-div">
+          <Row>
+            <Col>
+              <h2 className="inspect-table-top-title">Books</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Add to Playlist?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {renderBookTableData()}
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <h2 className="inspect-table-top-title">Movies</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Add to Playlist?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {renderMovieTableData()}
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+        </div>
+        <Row>
+          <Col>
+            <div className="save-play-button-col">
+              <Button className="save-playlist-btn" onClick={onSubmit}>Save</Button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }

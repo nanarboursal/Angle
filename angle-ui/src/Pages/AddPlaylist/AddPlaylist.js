@@ -61,9 +61,9 @@ class AddPlaylist extends React.Component {
         return this.state.libraryBooks.map((book, index) => {
             return (
                 <tr key={book.title}>
-                    <td>{book.title}</td>
+                    <td style={{fontStyle: "italic", fontWeight: "bold"}}>{book.title}</td>
                     <td>{book.author}</td>
-                    <td><Button onClick={() => this.onAddBookToPlaylist(book)}> + </Button></td>
+                    <td><Button style={{width: "50px", backgroundColor: 'white', color: "#293b3f", borderWidth: "4px", borderColor: "#293b3f", fontSize: "1.3rem", borderRadius: 8 }} onClick={() => this.onAddBookToPlaylist(book)}> + </Button></td>
                 </tr>
             )
         })
@@ -73,9 +73,9 @@ class AddPlaylist extends React.Component {
         return this.state.libraryMovies.map((movie, index) => {
             return (
                 <tr key={movie.title}>
-                    <td>{movie.title}</td>
+                    <td style={{fontStyle: "italic", fontWeight: "bold"}}>{movie.title}</td>
                     <td>{movie.author}</td>
-                    <td><Button onClick={() => this.onAddMovieToPlaylist(movie)}> + </Button></td>
+                    <td><Button style={{width: "50px", backgroundColor: 'white', color: "#293b3f", borderWidth: "4px", borderColor: "#293b3f", fontSize: "1.3rem", borderRadius: 8 }} onClick={() => this.onAddMovieToPlaylist(movie)}> + </Button></td>
                 </tr>
             )
         })
@@ -85,9 +85,10 @@ class AddPlaylist extends React.Component {
         return this.state.books.map((book, index) => {
             return (
                 <tr key={book.title}>
-                    <td>{book.title}</td>
+                    <td style={{fontStyle: "italic", fontWeight: "bold"}}>{book.title}</td>
                     <td>{book.author}</td>
-                    <td><Button onClick={() => this.onRemoveBookFromPlaylist(book)}> - </Button></td>
+                    <td><Button style={{width: "50px", backgroundColor: 'white', color: "#293b3f", borderWidth: "4px", borderColor: "#293b3f", fontSize: "1.3rem", borderRadius: 8 }} onClick={() => this.onRemoveBookFromPlaylist(book)}> - </Button></td>
+                    <td>See Media</td>
                 </tr>
             )
         })
@@ -97,9 +98,9 @@ class AddPlaylist extends React.Component {
         return this.state.movies.map((movie, index) => {
             return (
                 <tr key={movie.title}>
-                    <td>{movie.title}</td>
+                    <td style={{fontStyle: "italic", fontWeight: "bold"}}>{movie.title}</td>
                     <td>{movie.author}</td>
-                    <td><Button onClick={() => this.onRemoveMovieFromPlaylist(movie)}> - </Button></td>
+                    <td><Button style={{width: "50px", backgroundColor: 'white', color: "#293b3f", borderWidth: "4px", borderColor: "#293b3f", fontSize: "1.3rem", borderRadius: 8 }} onClick={() => this.onRemoveMovieFromPlaylist(movie)}> - </Button></td>
                 </tr>
             )
         })
@@ -181,124 +182,133 @@ class AddPlaylist extends React.Component {
 
     render() {
         return (
-            <Container>
-                <Row className="add-playlist-title">
-                    <Col>
-                        <h1>Create New Playlist</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="playlist-name">
-                        <input
-                            type="text"
-                            name="playlistName"
-                            id="playlistName"
-                            placeholder="Enter playlist name."
-                            value={this.state.playlistName}
-                            onChange={this.onChange}
-                        ></input>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <h1>In Your Playlist</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <h2>Books</h2>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Table>
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Add to Playlist?</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderPlaylistBookTableData()}
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <h2>Movies</h2>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Table>
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Add to Playlist?</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderPlaylistMovieTableData()}
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <h1>Library Options</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <h2>Books</h2>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Table>
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Add to Playlist?</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderBookTableData()}
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <h2>Movies</h2>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Table>
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Add to Playlist?</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderMovieTableData()}
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-                <Row className="submit-btn">
-                    <Col>
-                        <Button onClick={this.onSubmit}>Create</Button>
-                    </Col>
-                </Row>
-            </Container>
+            <div className="add-playlist-page">
+                <Container>
+                    <Row >
+                        <Col>
+                            <h1 className="add-playlist-title">Create New Playlist</h1>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="playlist-name">
+                            <input
+                                type="text"
+                                name="playlistName"
+                                id="playlistName"
+                                placeholder="Enter playlist name."
+                                value={this.state.playlistName}
+                                onChange={this.onChange}
+                            ></input>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <h1 className="table-top-header-title">In Your Playlist</h1>
+                        </Col>
+                    </Row>
+                    <div className="table-list-div">
+                        <Row>
+                            <Col>
+                                <h2 className="table-top-title">Books</h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Table>
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Author</th>
+                                            <th>Keep in Playlist?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.renderPlaylistBookTableData()}
+                                    </tbody>
+                                </Table>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <h2 className="table-top-title">Movies</h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Table>
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Author</th>
+                                            <th>Keep in Playlist?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.renderPlaylistMovieTableData()}
+                                    </tbody>
+                                </Table>
+                            </Col>
+                        </Row>
+                    </div>
+                    <Row>
+                        <Col>
+                            <h1 className="table-top-header-title">Library Options</h1>
+                        </Col>
+                    </Row>
+                    <div className="table-list-div">
+
+                        <Row>
+                            <Col>
+                                <h2 className="table-top-title">Books</h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Table>
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Author</th>
+                                            <th>Add to Playlist?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.renderBookTableData()}
+                                    </tbody>
+                                </Table>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <h2 className="table-top-title">Movies</h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Table>
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Author</th>
+                                            <th>Add to Playlist?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.renderMovieTableData()}
+                                    </tbody>
+                                </Table>
+                            </Col>
+                        </Row>
+                    </div>
+                    <Row>
+                        <Col>
+                            <div className="create-button-col ">
+                                <Button className="create-btn" onClick={this.onSubmit}>Create</Button>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         );
     }
 }
