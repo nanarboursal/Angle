@@ -47,7 +47,7 @@ function SearchBar({ placeholder, data, clickEvent }) {
           {filteredData.slice(0, 15).map((value, key) => {
             return (
               <a className="data-item" target="_blank" onClick={() => clickEvent(value)}>
-                <p>{value.title}</p> <p className="author">by {value.author}</p>
+                <p>{value.title}</p> <p className="author">by {value.authors}</p>
               </a>
             );
           })}

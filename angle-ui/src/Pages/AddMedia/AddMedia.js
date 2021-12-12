@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Row, Col, ButtonGroup } from "reactstrap";
-// import { data } from "../../Data/Books/books.json";
-import { data } from "./books.json";
+import { data } from "../../Data/Books/books.json";
+// import { data } from "./books.json";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import { addMedia } from "../../Functions/UserFunctions";
 import { Rating, RatingView } from "react-simple-star-rating";
@@ -59,7 +59,7 @@ class AddMedia extends React.Component {
 
   clickEvent = (media) => {
     this.setState({ title: media.title });
-    this.setState({ author: media.author });
+    this.setState({ author: media.authors });
   }
 
   render() {
